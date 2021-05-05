@@ -6,12 +6,13 @@ class Feedback(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   feedback_text = db.Column(db.Text)
   feedback_video = db.Column(db.Text)
-  video_id = db.Column(db.Integer, db.ForeignKey('video_id'))
-  question_id = db.Column(db.Integer, db.ForeignKey('question_id'))
+  video_id = db.Column(db.Integer, db.ForeignKey('videos.id'))
+  question_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-  video = db.relationship('Video', backref='feedback_video', foreign_keys = [video_id])
-  question = db.relationship('Question', backref='questions', foreign_keys = [question_id])
-
+  videos = db.relationship('Video', back_populates = 'feedback')
+  questions = db.relationship('Question', back_populates = 'feedback')
+  users = db.relationship('User', back_populates = 'feedback')
 
 
   def to_dict(self):

@@ -9,7 +9,8 @@ class Question(db.Model):
   question_followup = db.Column(db.Text)
   answer_filter = db.Column(db.Text)
 
-
+  videos = db.relationship('Video', back_populates = 'questions')
+  feedback = db.relationship('Feedback', back_populates= 'questions')
 
   def to_dict(self):
     return {

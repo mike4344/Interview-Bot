@@ -9,15 +9,14 @@ class Video(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
   question_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
 
-    user = db.relationship('User', backref='users_video', foreign_keys = [user_id])
-    question = db.relationship('Question', backref='questions', foreign_keys = [question_id])
-
+  questions = db.relationship('Question', back_populates = 'videos')
+  users = db.relationship('User', back_populates = 'videos')
+  feedback = db.relationship('Feedback', back_populates = 'videos')
 
   def to_dict(self):
     return {
       "id": self.id,
-      "feedback_text": self.feedback_text,
-      "feedback_video": self.feedback_video,
-      "video_id": self.video_id,
+      "video": self.video,
+      "user_id": self.user_id,
       "question_id": self.question_id
     }

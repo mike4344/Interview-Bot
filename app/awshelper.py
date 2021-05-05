@@ -4,7 +4,7 @@ import uuid
 
 BUCKET_NAME = os.environ.get("S3_BUCKET")
 S3_LOCATION = f"https://{BUCKET_NAME}.s3.amazonaws.com/"
-ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif"}
+# ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif", "vp8", "opus"}
 
 s3 = boto3.client(
    "s3",
@@ -13,12 +13,13 @@ s3 = boto3.client(
 )
 
 
-def allowed_file(filename):
-    return "." in filename and \
-           filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+# def allowed_file(filename):
+#     return "." in filename and \
+#            filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 def get_unique_filename(filename):
+    print('iamhere', filename)
     ext = filename.rsplit(".", 1)[1].lower()
     unique_filename = uuid.uuid4().hex
     return f"{unique_filename}.{ext}"

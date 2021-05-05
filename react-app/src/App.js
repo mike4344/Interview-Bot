@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
+import Interview from "./components/interview"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        </Route>
+        <Route path="/interview" exact={true}>
+          <Interview />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
