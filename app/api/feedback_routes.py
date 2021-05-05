@@ -17,9 +17,15 @@ def feedback_handler(feedback_id):
         return {'feedback': feedback}
     elif request.method == 'POST':
         data = request.json
+
+
+
+        feedback_text= data['feedback_text']
+        feedback_video= data['feedback_video']
+
         feedback = Feedback(
-        feedback_text= data['feedback_text'],
-        feedback_video= data['feedback_video'],
+        feedback_text= feedback_text,
+        feedback_video= feedback_video,
         video_id= data['video_id'],
         question_id= data['question_id'])
         db.session.add(feedback)
@@ -32,5 +38,3 @@ def feedback_handler(feedback_id):
         db.session.delete(video_query)
         db.session.delete(feedback_query)
         db.session.commit()
-
-

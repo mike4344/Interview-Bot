@@ -16,6 +16,8 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "react-speech": "^1.0.2",
+    "react-speech-recognition": "^3.8.0",
     "react-video-recorder": "^3.18.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
