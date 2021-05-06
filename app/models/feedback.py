@@ -21,5 +21,6 @@ class Feedback(db.Model):
       "feedback_text": self.feedback_text,
       "feedback_video": self.feedback_video,
       "video_id": self.video_id,
-      "question_id": self.question_id
+      "question_id": self.question_id,
+      'user_id': self.user_id
     }

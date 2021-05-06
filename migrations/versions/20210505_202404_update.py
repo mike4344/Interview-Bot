@@ -1,8 +1,8 @@
-"""this
+"""update
 
-Revision ID: 77ae5d656ab0
+Revision ID: c82b7cac76c8
 Revises: 
-Create Date: 2021-05-04 09:13:38.333052
+Create Date: 2021-05-05 20:24:04.900002
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '77ae5d656ab0'
+revision = 'c82b7cac76c8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -52,7 +52,9 @@ def upgrade():
     sa.Column('feedback_video', sa.Text(), nullable=True),
     sa.Column('video_id', sa.Integer(), nullable=True),
     sa.Column('question_id', sa.Integer(), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['question_id'], ['questions.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['video_id'], ['videos.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

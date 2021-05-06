@@ -9,7 +9,7 @@ export default function Interview() {
     const user = useSelector(state => state.session.user)
     const { transcript, resetTranscript } = useSpeechRecognition()
     const [question, setQuestion] = useState(false)
-
+    const [obj, setObj] = useState({})
     useEffect(async ()=>{
 
       await faceapi.loadSsdMobilenetv1Model('/facemodels')
@@ -28,10 +28,9 @@ export default function Interview() {
         setQuestion(getQuestion.question)
       })()
     },[])
-  const mostLikelyExpression ={ angry: 0, disgusted: 0, fearful:0, happy: 0, sad: 0, neutral: 0, surprised: 0,}
-
-  const startDetections = async () => {
-
+    let mostLikelyExpression
+    const startDetections = async () => {
+      mostLikelyExpression ={ angry: 0, disgusted: 0, fearful:0, happy: 0, sad: 0, neutral: 0, surprised: 0,}
     SpeechRecognition.startListening({ continuous: true })
 
 
@@ -45,8 +44,10 @@ export default function Interview() {
             console.log(expressions)
               const mostLikelyExpressionForSlice = Object.keys(expressions).reduce((a, b) => expressions[a] > expressions[b] ? a : b)
               mostLikelyExpression[mostLikelyExpressionForSlice] += 1
-              console.log(mostLikelyExpression)
+              console.log(mostLikelyExpression, 'thissssssss')
+              setObj(mostLikelyExpression)
             }
+
           }else {
         clearInterval(interval)
       }
@@ -66,19 +67,26 @@ export default function Interview() {
         let formData = new FormData()
         var file = new File([videoBlob], "video.webm", {lastModified: 1534584790000});
         console.log(mostLikelyExpression)
+        console.log(obj)
         console.log('videoBlob', file)
         formData.append('video', file)
-      let video = await fetch(`/api/videos/0/${question.id}/${user.id}`, {
+          let videoJson = await fetch(`/api/videos/0/${question.id}/${user.id}`, {
           method: 'POST',
           body: formData
       })
+      let video = await videoJson.json()
+      console.log(video)
       await fetch('/api/feedback/0', {
         method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
         body : JSON.stringify({
         'feedback_text': transcript,
-        'feedback_video': mostLikelyExpression,
+        'feedback_video': obj,
         'video_id': video.id,
-        'question_id': question.id
+        'question_id': question.id,
+        'user_id': user.id
         })
       })
     }}
