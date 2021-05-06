@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import VideoRecorder from 'react-video-recorder'
+import VideoRecorder from 'react-video-record-mike'
 import {useSelector} from 'react-redux'
 //import '@tensorflow/tfjs-node';
 import * as faceapi from 'face-api.js';

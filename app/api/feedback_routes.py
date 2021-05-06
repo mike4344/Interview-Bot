@@ -5,15 +5,23 @@ from profanity_check import predict_prob
 
 feedback_routes = Blueprint('feedback', __name__)
 
+@feedback_routes.route('/<int:user_id>/all')
+def feedback_all(user_id):
+    feedback_query = Feedback.query.filter(Feedback.user_id == user_id).all()
+    feedback_list = [feedback.to_dict() for feedback in feedback_query]
+    for feedback in feedback_list:
+        video_query = Video.query.filter(Video.id == feedback['video_id']).first()
+        video = video_query.to_dict()
+        feedback['video'] = video
+        question_query = Question.query.filter(Question.id == feedback['question_id']).first()
+        question = question_query.to_dict()
+        feedback['question'] = question
+    return {'feedback': feedback_list}
 
-@feedback_routes.route('/<feedback_id>', methods=['GET', 'POST', 'DELETE'])
+@feedback_routes.route('/<int:feedback_id>', methods=['GET', 'POST', 'DELETE'])
 def feedback_handler(feedback_id):
     if request.method == 'GET':
         feedback_query = Feedback.query.filter(Feedback.id == feedback_id).first()
-        feedback = feedback_query.to_dict()
-        video_query = Video.query.filter(Video.id == feedback.video_id).first()
-        video = video_query.to_dict()
-        feedback['video'] = video
         return {'feedback': feedback}
     elif request.method == 'POST':
         data = request.json

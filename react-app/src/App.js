@@ -5,7 +5,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
-import User from "./components/User";
+import Feedback from "./components/feedback";
 import { authenticate } from "./store/session";
 import Interview from "./components/interview"
 import { useDispatch } from "react-redux";
@@ -39,15 +39,15 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <Route path="/interview" exact={true}>
+        <Route path="/interview" exact={true} >
           <Interview />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
-        </ProtectedRoute>
+        <Route path="/feedback" exact={true}>
+          <Feedback />
+        </Route>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
