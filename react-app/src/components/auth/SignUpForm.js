@@ -1,22 +1,29 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../services/auth';
+import {useDispatch, useSelector} from 'react-redux'
+import { signUp } from '../../store/session';
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = () => {
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.session.user)
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [image, setImage] = useState(null)
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", image);
+
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
+      await dispatch(signUp(username, email, password, image));
     }
-  };
+    }
+    if (user) {
+      return <Redirect to="/" />;
+    }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -34,11 +41,12 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     setRepeatPassword(e.target.value);
   };
 
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+    setImage(file)
+  };
 
-  return (
+ return (
     <form onSubmit={onSignUp}>
       <div>
         <label>User Name</label>
@@ -58,6 +66,18 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           value={email}
         ></input>
       </div>
+      <div >
+        <label>Image</label>
+        <input
+          name="image"
+          type="file"
+          placeholder="Select Image"
+          accept="image/*"
+
+          onChange={updateImage}
+
+        ></input>
+        </div>
       <div>
         <label>Password</label>
         <input

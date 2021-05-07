@@ -17,9 +17,15 @@ def fvideos_handler(video_id, question_id, user_id):
     elif request.method == 'POST':
         if ("video" in request.files):
             video=request.files["video"]
+            print(video, 'video')
             video.filename = get_unique_filename(video.filename)
+            print(video.filename, 'video.filename')
             upload = upload_file_to_s3(video)
-            url = upload["url"]
+            print(upload, 'upload')
+            if 'url' in upload:
+                url = upload["url"]
+            else:
+                url = upload['errors']
         else :
             url = ""
         data = request.json

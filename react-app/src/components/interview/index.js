@@ -10,31 +10,38 @@ export default function Interview() {
     const { transcript, resetTranscript } = useSpeechRecognition()
     const [question, setQuestion] = useState(false)
     const [obj, setObj] = useState({})
-    useEffect(async ()=>{
 
-      await faceapi.loadSsdMobilenetv1Model('/facemodels')
-      await faceapi.loadTinyFaceDetectorModel('/facemodels')
-      await faceapi.loadFaceLandmarkModel('/facemodels')
-      await faceapi.loadFaceLandmarkTinyModel('/facemodels')
-      await faceapi.loadFaceRecognitionModel('/facemodels')
-      await faceapi.loadFaceExpressionModel('/facemodels')
-    },[])
 
 
     useEffect(()=>{
       (async()=>{
-        let getQuestionJSON = await fetch('/api/questions')
+        let getQuestionJSON = await fetch('/api/questions/')
         let getQuestion = await getQuestionJSON.json()
+        await faceapi.loadSsdMobilenetv1Model('/')
+        console.log('1 success')
+        await faceapi.loadTinyFaceDetectorModel('/')
+        console.log('2 success')
+        await faceapi.loadFaceLandmarkModel('/')
+        console.log('3 success')
+        await faceapi.loadFaceLandmarkTinyModel('/')
+        console.log('4 success')
+        await faceapi.loadFaceRecognitionModel('/')
+        console.log('5 success')
+        await faceapi.loadFaceExpressionModel('/')
+        console.log('6 success')
+
         setQuestion(getQuestion.question)
       })()
     },[])
     let mostLikelyExpression
     const startDetections = async () => {
+      console.log('startDetections')
       mostLikelyExpression ={ angry: 0, disgusted: 0, fearful:0, happy: 0, sad: 0, neutral: 0, surprised: 0,}
     SpeechRecognition.startListening({ continuous: true })
 
 
     let interval = setInterval(async () => {
+      console.log('interval')
       const videoTag=document.getElementById('video');
       if (videoTag){
          let emotionDetection = await faceapi.detectSingleFace(videoTag).withFaceLandmarks().withFaceExpressions()
@@ -57,7 +64,8 @@ export default function Interview() {
 	return (
 		<div className='box' style={{height:600}}>
              <VideoRecorder
-             dataAvailableTimeout={10000}
+              countdownTime={3000}
+            dataAvailableTimeout={10000}
              replayVideoAutoplayAndLoopOff
              onStartRecording={startDetections}
              mimeType="video/webm"
@@ -67,7 +75,7 @@ export default function Interview() {
         let formData = new FormData()
         var file = new File([videoBlob], "video.webm", {lastModified: 1534584790000});
         console.log(mostLikelyExpression)
-        console.log(obj)
+        console.log('mostlikelyexpression',obj)
         console.log('videoBlob', file)
         formData.append('video', file)
           let videoJson = await fetch(`/api/videos/0/${question.id}/${user.id}`, {
