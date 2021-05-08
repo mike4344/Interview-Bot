@@ -77,22 +77,18 @@ export default function Interview() {
 
 
 	return (
-		<div className='interview-box' style={{height:600}}>
+		<div className='interview-box' >
       <div className='interview-advice-list-box' >
         <ul className='interview-advice-list' >
           <li className='interview-advice-header'>Virtual Interview Tips</li>
           <li className='interview-advice'>Make sure you are centered in the video screen</li>
-        <li className='interview-advice-sub'>You want to take advantage this as much as possible since you are not there in person to do so. Make sure to pay attention to posture and eye contact as well as your facial expressions to show engagement.</li>
+        <li className='interview-advice-sub'>We want the interview to focused on you</li>
           <li className='interview-advice'>Click on the question to hear it read aloud</li>
         <li className='interview-advice-sub'>sometimes hearing it read aloud can help avoid confusion with the questions intent</li>
-          <li className='interview-advice'>The interview bot will using emotion recognition technology to scan your face at regular intervals and determine the most likely emotion you are coming across as over the video</li>
+          <li className='interview-advice'>The interview bot will using emotion recognition technology to scan your face</li>
         <li className='interview-advice-sub'>Keep in mind you want to come across in a positive manner so be mindful of your expressions in the real interview too!</li>
           <li className='interview-advice'>The interview bot will make a transcript of your answer and filter it for likelyhood of offending</li>
         <li className='interview-advice-sub'>Make sure to annunciate, if the transcriber cannot understand you, the interviewer may struggle to as well</li>
-          <li className='interview-advice'></li>
-        <li className='interview-advice-sub'></li>
-          <li className='interview-advice'></li>
-        <li className='interview-advice-sub'></li>
         </ul>
       </div>
              <VideoRecorder
@@ -104,6 +100,7 @@ export default function Interview() {
     onRecordingComplete={videoRecordComplete}
   />
     {question && <div className='question'>
+      <div className='welcome'> Welcome to the Interview at BotCo!</div>
       <Speech
         pitch="1"
         rate="1"
@@ -112,7 +109,7 @@ export default function Interview() {
         voice="Google UK English Male"
         textAsButton={true}
         text ={question.questions_text} />
-
+    <img src="https://i.pinimg.com/originals/50/38/f6/5038f6672f089f3a50c4f075feddfc42.gif" />
     </div>}
 		</div>
 	);

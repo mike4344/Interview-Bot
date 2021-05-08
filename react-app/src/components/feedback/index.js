@@ -15,11 +15,11 @@ export default function Feedback() {
     },[])
 
 	return (
-		<div className='feedback-container' >
-            <div className='feedback-list-container'>
-                <ul className='feedback-list'>
+		<div className='interview-box' >
+            <div className='interview-advice-list-box'>
+                <ul className='interview-advice-list'>
                 {allFeedback && allFeedback.map((feedback, i) =>(
-                    <li key={i} id={i}
+                    <li key={i} id={i} className = 'interview-advice'
                     onClick={()=>{
                         setCurrentFeedback(allFeedback[i])
                     }}
@@ -28,12 +28,14 @@ export default function Feedback() {
                     ))}
                 </ul>
             </div>
-            {allFeedback && currentFeedback && (
-                <div className='current-feedback-container'>
+            {allFeedback && currentFeedback &&
+                <div className='kvKMQz'>
+
                     <ReactPlayer
                     controls={true}
                     url={currentFeedback.video.video} />
-                    <div className='question_box' >
+
+                    <div className='question' >
                         <div className='question_text'>
                             {currentFeedback.question.questions_text}
                         </div>
@@ -50,7 +52,7 @@ export default function Feedback() {
                         </div>
                     </div>
                 </div>
-            )}
+            }
 
 		</div>
 	);

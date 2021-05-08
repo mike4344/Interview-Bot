@@ -28,22 +28,10 @@ export default function Interview() {
           <li className='interview-advice_info-sub'>People may be more likely to miss cues as to weather or not the other person is done speaking over video, when you think they are done speaking give them a couple seconds more to make sure they are don and it gives you a little more time to prepare your answer.</li>
           <li className='interview-advice_info'>Make it obvious when you are done speaking</li>
           <li className='interview-advice_info-sub'>on the other side they may have trouble knowing when you are done, try to either nod to give them ask them a question to indicate that you are done</li>
-          <li className='interview-advice_info'></li>
-          <li className='interview-advice_info-sub'></li>
-          <li className='interview-advice_info'></li>
-          <li className='interview-advice_info-sub'></li>
-          <li className='interview-advice_info'></li>
-          <li className='interview-advice_info-sub'></li>
-          <li className='interview-advice_info'></li>
-          <li className='interview-advice_info-sub'></li>
-          <li className='interview-advice_info'></li>
-          <li className='interview-advice_info-sub'></li>
-          <li className='interview-advice_info'></li>
-          <li className='interview-advice_info-sub'></li>
-          <li className='interview-advice_info'></li>
-          <li className='interview-advice_info-sub'></li>
-          <li className='interview-advice_info'></li>
-          <li className='interview-advice_info-sub'></li>
+          <li className='interview-advice_info'>Do research on the company you are interviewing for</li>
+          <li className='interview-advice_info-sub'>Do your homework, you are interviewing them as much as they are interviewing you, ask good questions about the company and be able tell them specific reason why you want to work at their company</li>
+          <li className='interview-advice_info'>Be a bit early</li>
+          <li className='interview-advice_info-sub'>Weather it is in person or virtual it is still very important to be at least 5minutes early to the interview, most interviewers will dismiss the possibility of hiring you if you show up late.</li>
           <li className='interview-advice_info'></li>
           <li className='interview-advice_info-sub'></li>
         </ul>
