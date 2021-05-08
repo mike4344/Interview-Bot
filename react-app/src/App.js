@@ -11,7 +11,7 @@ import Interview from "./components/interview"
 import { useDispatch } from "react-redux";
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
+
   const dispatch = useDispatch()
   const [loaded, setLoaded] = useState(false);
 
@@ -28,23 +28,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
+      <NavBar  />
       <Switch>
-        {/* <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        </Route> */}
         <Route path="/interview" exact={true} >
           <Interview />
         </Route>
-        <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList/>
-        </ProtectedRoute>
         <Route path="/feedback" exact={true}>
           <Feedback />
         </Route>

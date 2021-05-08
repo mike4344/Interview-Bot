@@ -18,40 +18,30 @@ export default function Interview() {
         let getQuestionJSON = await fetch('/api/questions/')
         let getQuestion = await getQuestionJSON.json()
         await faceapi.loadSsdMobilenetv1Model('/')
-        console.log('1 success')
         await faceapi.loadTinyFaceDetectorModel('/')
-        console.log('2 success')
         await faceapi.loadFaceLandmarkModel('/')
-        console.log('3 success')
         await faceapi.loadFaceLandmarkTinyModel('/')
-        console.log('4 success')
         await faceapi.loadFaceRecognitionModel('/')
-        console.log('5 success')
         await faceapi.loadFaceExpressionModel('/')
-        console.log('6 success')
 
         setQuestion(getQuestion.question)
       })()
     },[])
     let mostLikelyExpression
     const startDetections = async () => {
-      console.log('startDetections')
       mostLikelyExpression ={ angry: 0, disgusted: 0, fearful:0, happy: 0, sad: 0, neutral: 0, surprised: 0,}
     SpeechRecognition.startListening({ continuous: true })
 
 
     let interval = setInterval(async () => {
-      console.log('interval')
       const videoTag=document.getElementById('video');
       if (videoTag){
          let emotionDetection = await faceapi.detectSingleFace(videoTag).withFaceLandmarks().withFaceExpressions()
 
          if (emotionDetection !== undefined){
             let expressions = emotionDetection.expressions
-            console.log(expressions)
               const mostLikelyExpressionForSlice = Object.keys(expressions).reduce((a, b) => expressions[a] > expressions[b] ? a : b)
               mostLikelyExpression[mostLikelyExpressionForSlice] += 1
-              console.log(mostLikelyExpression, 'thissssssss')
               setObj(mostLikelyExpression)
             }
 
@@ -60,30 +50,16 @@ export default function Interview() {
       }
       }, 2000)
   }
-
-	return (
-		<div className='box' style={{height:600}}>
-             <VideoRecorder
-              countdownTime={3000}
-            dataAvailableTimeout={10000}
-             replayVideoAutoplayAndLoopOff
-             onStartRecording={startDetections}
-             mimeType="video/webm"
-    onRecordingComplete={async videoBlob => {
-        console.log('transcript',transcript)
+  async function videoRecordComplete(videoBlob) {
         SpeechRecognition.stopListening()
         let formData = new FormData()
         var file = new File([videoBlob], "video.webm", {lastModified: 1534584790000});
-        console.log(mostLikelyExpression)
-        console.log('mostlikelyexpression',obj)
-        console.log('videoBlob', file)
         formData.append('video', file)
           let videoJson = await fetch(`/api/videos/0/${question.id}/${user.id}`, {
           method: 'POST',
           body: formData
       })
       let video = await videoJson.json()
-      console.log(video)
       await fetch('/api/feedback/0', {
         method: 'POST',
         headers: {
@@ -97,7 +73,35 @@ export default function Interview() {
         'user_id': user.id
         })
       })
-    }}
+    }
+
+
+	return (
+		<div className='interview-box' style={{height:600}}>
+      <div className='interview-advice-list-box' >
+        <ul className='interview-advice-list' >
+          <li className='interview-advice-header'>Virtual Interview Tips</li>
+          <li className='interview-advice'>Make sure you are centered in the video screen</li>
+        <li className='interview-advice-sub'>You want to take advantage this as much as possible since you are not there in person to do so. Make sure to pay attention to posture and eye contact as well as your facial expressions to show engagement.</li>
+          <li className='interview-advice'>Click on the question to hear it read aloud</li>
+        <li className='interview-advice-sub'>sometimes hearing it read aloud can help avoid confusion with the questions intent</li>
+          <li className='interview-advice'>The interview bot will using emotion recognition technology to scan your face at regular intervals and determine the most likely emotion you are coming across as over the video</li>
+        <li className='interview-advice-sub'>Keep in mind you want to come across in a positive manner so be mindful of your expressions in the real interview too!</li>
+          <li className='interview-advice'>The interview bot will make a transcript of your answer and filter it for likelyhood of offending</li>
+        <li className='interview-advice-sub'>Make sure to annunciate, if the transcriber cannot understand you, the interviewer may struggle to as well</li>
+          <li className='interview-advice'></li>
+        <li className='interview-advice-sub'></li>
+          <li className='interview-advice'></li>
+        <li className='interview-advice-sub'></li>
+        </ul>
+      </div>
+             <VideoRecorder
+              countdownTime={0}
+            dataAvailableTimeout={10000}
+             replayVideoAutoplayAndLoopOff
+             onStartRecording={startDetections}
+             mimeType="video/webm"
+    onRecordingComplete={videoRecordComplete}
   />
     {question && <div className='question'>
       <Speech
@@ -106,9 +110,8 @@ export default function Interview() {
         volume="1"
         lang="en-GB"
         voice="Google UK English Male"
+        textAsButton={true}
         text ={question.questions_text} />
-
-      {question.questions_text}
 
     </div>}
 		</div>

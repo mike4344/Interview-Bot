@@ -4,7 +4,7 @@ import LogoutButton from './auth/LogoutButton';
 import LoginModal from '../components/Modals/loginform'
 import SignupModal from '../components/Modals/signup'
 
-const NavBar = ({ setAuthenticated }) => {
+const NavBar = () => {
   return (
     <nav>
       <ul>
@@ -13,6 +13,7 @@ const NavBar = ({ setAuthenticated }) => {
             Home
           </NavLink>
         </li>
+
         <li>
           <LoginModal />
           </li>
@@ -25,7 +26,7 @@ const NavBar = ({ setAuthenticated }) => {
           </NavLink>
         </li>
         <li>
-          <LogoutButton setAuthenticated={setAuthenticated} />
+          <LogoutButton />
         </li>
       </ul>
     </nav>
