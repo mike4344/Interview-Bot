@@ -33,13 +33,13 @@ def feedback_handler(feedback_id):
             offensive = [1]
         else:
             offensive = predict_prob([feedback_text])
-        feedback_text = feedback_text + ' Probability of the answer being offensive ' + str(int(offensive[0] * 100)) + '%'
+        feedback_text = feedback_text + ':' + str(int(offensive[0] * 100))
         total = 1
-        emotion_percentage = 'According to the Emotion recognition results '
+        emotion_percentage = ''
         for emotion in feedback_video:
             total += feedback_video[emotion]
         for emotion in feedback_video:
-            emotion_percentage +=  (str(int(feedback_video[emotion] / total * 100)) + '% ' + ': ' + emotion + ' ')
+            emotion_percentage +=  (str(int(feedback_video[emotion] / total * 100))  + ':' + emotion + '/')
 
 
 

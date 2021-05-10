@@ -7,15 +7,51 @@ grey #E1E2E2 rgb(225, 226, 226)
     font-family: "Proxima Nova", "Helvetica Neue", "Helvetica", "Arial";
     box-sizing: border-box;
 }
+html {
+    scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+    width: 0.30rem;
+}
+body::-webkit-scrollbar-track {
+    background: #1D2228;
+}
+body::-webkit-scrollbar-thumb {
+    background: #FB8122;
+}
+
 body{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     margin: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .navbar{
     width:100vw;
     background-color: rgb(29, 34, 40);
     padding: 10px;
     margin: 0;
-    border-bottom: 5px solid  rgb(251, 129, 34)
+    border-bottom: 5px solid  rgb(251, 129, 34);
+
+}
+.button:hover{
+    transition-property: all;
+    transition-duration: 1s;
+    transition-delay: .5s;
+    transition-timing-function: linear;
+    color: rgb(251, 129, 34);
+
+}
+.navlink:hover{
+
+    transition-property: all;
+    transition-duration: 1s;
+    transition-delay: .5s;
+    transition-timing-function: linear;
+    color: rgb(251, 129, 34);
+
+
 }
 .navbar-list{
     width:90vw;
@@ -30,11 +66,16 @@ body{
 
 }
 .button{
+    font-size:16px ;
+    transition-property: all;
+    transition-duration: .5s;
+    transition-delay: .5s;
     background-color: transparent;
     color: rgb(225, 226, 226);
     border:none;
     text-decoration: solid underline rgb(251, 129, 34) 5px ;
     cursor: pointer;
+
 
 }
 .active{
@@ -47,7 +88,10 @@ body{
     border: none;
     text-decoration: solid underline rgb(251, 129, 34) 5px ;
     cursor: pointer;
-
+    transition-property: all;
+    transition-duration: .5s;
+    transition-delay: .5s;
+    transition-timing-function: linear;
 }
 .interview-box{
     width: 100vw;
@@ -79,6 +123,7 @@ body{
     border-bottom : 1px solid;
 }
 .interview-advice{
+    width: 100%;
     text-shadow: 1px 1px 1px black;
     color:  rgb(251, 129, 34);
     font-size: 14px;
@@ -92,9 +137,9 @@ body{
     margin-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 2px 2px 1px black;
     color: rgb(255, 226, 226);
-    font-size: 12px;
+    font-size: 10px;
     justify-self: flex-end;
     display:flex;
 
@@ -133,6 +178,90 @@ body{
     display: flex;
     justify-content: center;
 }
+.feedback{
+    cursor: pointer;
+}
+.feedback-box{
+    width: 100vw;
+    display: grid;
+    height: 90vh;
+    grid-template-columns: 25vw 75vw;
+    grid-template-rows: auto;
+    grid-template-areas: 'advice feedback';
+}
+.switch{
+    grid-area: button;
+    width: 75vw;
+    height: 5vw;
+    color: rgb(255, 255, 255);
+    background-color:rgb(29, 34, 40);
+    border-bottom: 5px solid rgb(251, 129, 34);
+    transition-property: all;
+    transition-duration: .5s;
+    transition-delay: .2s;
+    transition-timing-function: linear;
+
+}
+.switch:hover{
+    width: 75vw;
+    height: 5vw;
+    color: rgb(255, 255, 255);
+    background-color:rgb(29, 34,40);
+    border-bottom: 10px solid rgb(251, 129, 34);
+    transition-property: all;
+    transition-duration: .5s;
+    transition-delay: .5s;
+    transition-timing-function: linear;
+
+
+}
+.emotional-feedback{
+    grid-area: bot;
+    display: flex;
+    width: 75vw;
+    height: 12vh;
+    color: rgb(255, 255, 255);
+    background-color:rgb(29, 34, 40);
+    border-left: 5px solid rgb(251,129,34);
+    border-top: 5px solid rgb(251,129,34);
+    justify-content: space-between;
+    align-content:flex-end;
+
+
+}
+.video{
+    grid-area: cen;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.feedback-container{
+    display: grid;
+    grid-template-columns: 50vw 25vw;
+    grid-template-rows: 5vw 30vw;
+    grid-template-areas: 'button button''cen cen' 'bot bot';
+
+}
+.robot_corner{
+    height: 30vw;
+    width: 30vw;
+    opacity: 1;
+    transform: translateX(-7.1vw);
+    pointer-events: none;
+}
+.bottom-header{
+    text-decoration: solid underline rgb(251, 129, 34) 5px ;
+}
+.player{
+    border:1px solid rgb(251,129,34)
+}
+.emotion{
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    text-transform: capitalize;
+}
+
 /*
 Credits for images
 <a href="https://www.freepik.com/photos/business">Business photo created by yanalya - www.freepik.com</a>

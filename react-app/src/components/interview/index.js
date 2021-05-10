@@ -81,14 +81,16 @@ export default function Interview() {
       <div className='interview-advice-list-box' >
         <ul className='interview-advice-list' >
           <li className='interview-advice-header'>Virtual Interview Tips</li>
-          <li className='interview-advice'>Make sure you are centered in the video screen</li>
+          <li className='interview-advice'>Make sure you are centered </li>
         <li className='interview-advice-sub'>We want the interview to focused on you</li>
-          <li className='interview-advice'>Click on the question to hear it read aloud</li>
-        <li className='interview-advice-sub'>sometimes hearing it read aloud can help avoid confusion with the questions intent</li>
-          <li className='interview-advice'>The interview bot will using emotion recognition technology to scan your face</li>
-        <li className='interview-advice-sub'>Keep in mind you want to come across in a positive manner so be mindful of your expressions in the real interview too!</li>
-          <li className='interview-advice'>The interview bot will make a transcript of your answer and filter it for likelyhood of offending</li>
-        <li className='interview-advice-sub'>Make sure to annunciate, if the transcriber cannot understand you, the interviewer may struggle to as well</li>
+          <li className='interview-advice'>Click on the question to read it aloud</li>
+        <li className='interview-advice-sub'>Sometimes hearing it read aloud can help avoid confusion with the questions intent</li>
+          <li className='interview-advice'>Remember to smile!</li>
+        <li className='interview-advice-sub'>This bot uses facial recognition and emotion prediction technology to assess what emotion you are most likely coming across as.</li>
+          <li className='interview-advice'>Annunciate</li>
+        <li className='interview-advice-sub'>The bot will transcribe your audio, if it cannot understand what you said, an interviewer might not either!</li>
+          <li className='interview-advice'>Be Professional</li>
+        <li className='interview-advice-sub'>The bot will filter your responses for the likelyhood to offend someone, so be nice and respectful to the bot</li>
         </ul>
       </div>
              <VideoRecorder
@@ -100,7 +102,7 @@ export default function Interview() {
     onRecordingComplete={videoRecordComplete}
   />
     {question && <div className='question'>
-      <div className='welcome'> Welcome to the Interview at BotCo!</div>
+      <div className='welcome'>Welcome To Botco!</div>
       <Speech
         pitch="1"
         rate="1"

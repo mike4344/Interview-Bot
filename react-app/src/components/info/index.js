@@ -34,6 +34,9 @@ export default function Interview() {
           <li className='interview-advice_info-sub'>Weather it is in person or virtual it is still very important to be at least 5minutes early to the interview, most interviewers will dismiss the possibility of hiring you if you show up late.</li>
           <li className='interview-advice_info'></li>
           <li className='interview-advice_info-sub'></li>
+          <img src='/robot-corner.png' />
+          <img src='/robotlaying.png' />
+          <img src='/robotstanding.png' />
         </ul>
 
 		</div>
