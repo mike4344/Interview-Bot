@@ -234,6 +234,7 @@ body{
     height: 100%;
     width: 100%;
     display: flex;
+    background-color: rgb(29, 34, 40);
 }
 .feedback-container{
     display: grid;
@@ -261,9 +262,66 @@ body{
     padding-top: 5px;
     text-transform: capitalize;
 }
+.question-box{
+    grid-area: cen;
+    height: 30vh;
+    width: 70vw;
+    display: flex;
 
-/*
-Credits for images
-<a href="https://www.freepik.com/photos/business">Business photo created by yanalya - www.freepik.com</a>
+}
+.text-feedback{
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    overflow-y: scroll;
+}
+.text-feedback::-webkit-scrollbar {
+    width: 0.30rem;
+}
+.text-feedback::-webkit-scrollbar-track {
+    background: #1D2228;
+}
+.text-feedback::-webkit-scrollbar-thumb {
+    background: #FB8122;
+}
+.content{
+    background-color: rgb(29, 34, 40);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color:rgb(225, 226, 226);
+    height: 76vh;
+    border: 1px solid rgb(251, 129, 34);
+    text-shadow: 1px 1px 1px black;
+    padding: 2px;
 
-*/
+}
+.title{
+
+    text-shadow: 1px 1px 1px black;
+    color:  rgb(251, 129, 34);
+    text-decoration: solid underline rgb(251, 129, 34) 1px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+
+}
+.standing-robot{
+    height: 65vh;
+
+}
+.question_text{
+    text-shadow: 1px 1px 1px black;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+.question_answer{
+    margin-top: 10px;
+    text-shadow: 1px 1px 1px black;
+    display: flex;
+    justify-content: flex-start;
+
+}

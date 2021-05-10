@@ -65,21 +65,23 @@ export default function Feedback() {
 
                     {!video &&
                     <div className='content'>
-                        <div className='question' >
+                        <div className='question_box' >
                             <div className='question_text'>
-                                {currentFeedback.question.questions_text}
+                               <div className='title'> Question: </div>{currentFeedback.question.questions_text}
                             </div>
                             <div className='question_answer'>
-                                {currentFeedback.question.questions_answer}
+                            <div className='title'> Answer: </div> {currentFeedback.question.questions_answer}
                             </div>
                         </div>
                             <div className='text-feedback'>
-                                {currentFeedback.feedback_text.split(':')[0]}
-                                 Likelyhood to offend
-                                {currentFeedback.feedback_text.split(':')[1]}
+                            <div className='title'> Answer Transcript: </div>  {currentFeedback.feedback_text.split(':')[0]}
+                        </div   >
+                                <div className='emotional-feedback'>
+                                 <h2 className='bottom-header'>Likelyhood to offend {currentFeedback.feedback_text.split(':')[1]} %
+                                 </h2>
                             </div>
-
                     </div>}
+                    <img className='standing-robot' src='/robotstanding.png' />
                 </div>
             }
 
