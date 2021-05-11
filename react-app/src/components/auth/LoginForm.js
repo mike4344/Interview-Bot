@@ -11,13 +11,14 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const user = await dispatch(login(email, password));
-    if (!user.errors) {
-      return <Redirect to="/" />;
-    } else {
-      setErrors(user.errors);
+      const user = await dispatch(login(email, password));
+      if (!user.errors) {
+        return <Redirect to="/" />;
+      } else {
+        setErrors(user.errors);
+      }
     }
-  };
+
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -26,36 +27,41 @@ const LoginForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
-
+  const demo = (e) => {
+    setPassword('password')
+    setEmail('demo@aa.io')
+  }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
+    <form className="form-container" onSubmit={onLogin}>
+        <img className='robot_laying' src='/robotlaying.png' />
         {errors.map((error) => (
-          <div>{error}</div>
+          <div className='error'>{error}</div>
         ))}
-      </div>
-      <div>
+
+      <div className='login-box'>
+
         <label htmlFor="email">Email</label>
         <input
+          className="form-input"
           name="email"
           type="text"
           placeholder="Email"
           value={email}
           onChange={updateEmail}
         />
-      </div>
-      <div>
         <label htmlFor="password">Password</label>
         <input
+          className="form-input"
           name="password"
           type="password"
           placeholder="Password"
           value={password}
           onChange={updatePassword}
-        />
-        <button type="submit">Login</button>
-      </div>
+          />
+        <button className="button" type="submit">Login</button>
+        <button className="demo button"  onClick={demo} type="submit">Demo Login</button>
+          </div>
     </form>
   );
 };

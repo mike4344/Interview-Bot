@@ -96,7 +96,7 @@ body{
 .interview-box{
     width: 100vw;
     display: grid;
-    height: 90vh;
+    height: 86.5vh;
     grid-template-columns: 25vw 50vw 25vw;
     grid-template-rows: auto;
     grid-template-areas: 'advice video question';
@@ -106,6 +106,7 @@ body{
     background-color: rgb(29, 34, 40);
     color: rgb(rgb(255, 226, 226));
     box-sizing:  border-box;
+    height: 86.5vh;
 }
 .interview-advice-list{
     box-sizing:  border-box;
@@ -312,6 +313,12 @@ body{
     height: 65vh;
 
 }
+.standing-robot_signup{
+    height: 65vh;
+    position:absolute;
+    transform: translateX(25vw);
+
+}
 .question_text{
     text-shadow: 1px 1px 1px black;
     margin-top: 10px;
@@ -324,4 +331,92 @@ body{
     display: flex;
     justify-content: flex-start;
 
+}
+.robot_laying{
+    height: 40vh;
+    position: absolute;
+    transform: translate(4vw, -41vh);
+
+}
+.form-container{
+    background-color: rgb(29, 34, 40);
+    display: flex;
+    flex-direction: column;
+    color:rgb(225, 226, 226);
+    border: 1px solid rgb(251, 129, 34);
+    text-shadow: 1px 1px 1px black;
+    padding: 6px;
+    align-items: space-between;
+
+}
+.form-input{
+    padding: 2px;
+    margin: 5px;
+    border-radius: 15px;
+    border: 1px solid rgb(251, 129, 34);
+
+
+}
+.error{
+    color: rgb(251, 129, 34);
+}
+.login-box{
+    display:flex;
+}
+.file{
+    color: rgb(255, 226, 226);
+    box-sizing: border-box;
+}
+.interview_info{
+    background-color: rgb(29, 34, 40);
+    overflow-y: scroll;
+    width: 65vw;
+    height: 86.5vh;
+}
+.interview_info::-webkit-scrollbar {
+    width: 0.30rem;
+}
+.interview_info::-webkit-scrollbar-track {
+    background: #1D2228;
+}
+.interview_info::-webkit-scrollbar-thumb {
+    background: #FB8122;
+}
+.robot-standing-info{
+    position: absolute;
+    right: 0;
+    top: 15vh;
+    height: 85vh;
+}
+.splash-instruction-box{
+    height: 20vh;
+    width: 15vw;
+    border: 2px solid rgb(29, 34, 40);
+    border-radius: 15px;
+    padding: 5px;
+    position: relative;
+}
+
+.arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    border-right:25px solid rgb(29, 34, 40);
+    left: -2.1vw;
+    bottom: 1.15vh;
+  }
+.arrow-left2 {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    border-right:15px solid rgb(255, 255, 255);
+    left: .85vw;
+    bottom: -.85vh;
+  }
+.splash-container {
+    display: flex;
 }

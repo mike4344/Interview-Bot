@@ -47,12 +47,13 @@ const SignUpForm = () => {
   };
 
  return (
-    <form onSubmit={onSignUp}>
+    <form className="form-container" onSubmit={onSignUp}>
       <div>
         <label>User Name</label>
         <input
-          type="text"
-          name="username"
+         className="form-input"
+         type="text"
+         name="username"
           onChange={updateUsername}
           value={username}
         ></input>
@@ -60,15 +61,17 @@ const SignUpForm = () => {
       <div>
         <label>Email</label>
         <input
+          className="form-input"
           type="text"
           name="email"
           onChange={updateEmail}
           value={email}
-        ></input>
+          ></input>
       </div>
       <div >
         <label>Image</label>
         <input
+          className="form-input file"
           name="image"
           type="file"
           placeholder="Select Image"
@@ -76,11 +79,12 @@ const SignUpForm = () => {
 
           onChange={updateImage}
 
-        ></input>
+          ></input>
         </div>
       <div>
         <label>Password</label>
         <input
+          className="form-input"
           type="password"
           name="password"
           onChange={updatePassword}
@@ -90,6 +94,7 @@ const SignUpForm = () => {
       <div>
         <label>Repeat Password</label>
         <input
+          className="form-input"
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}
@@ -97,7 +102,8 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <button className="button signup" type="submit">Sign Up</button>
+      <img className='standing-robot_signup' src='/robotstanding.png' />
     </form>
   );
 };

@@ -6,6 +6,7 @@ import Feedback from "./components/feedback";
 import { authenticate } from "./store/session";
 import Interview from "./components/interview"
 import Info from "./components/info"
+import Splash from "./components/splash"
 import { useDispatch } from "react-redux";
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
           <Feedback />
         </Route>
         <Route path="/" exact={true} >
-          <h1>My Home Page</h1>
+          <Splash />
         </Route>
         <Route path="/info" exact={true} >
           <Info />
