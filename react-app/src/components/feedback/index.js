@@ -81,7 +81,7 @@ export default function Feedback() {
                                  </h2>
                             </div>
                     </div>}
-                    <img className='standing-robot' src='/robotstanding.png' />
+                    {!video && <img className='standing-robot' src='/robotstanding.png' />}
                 </div>
             }
 

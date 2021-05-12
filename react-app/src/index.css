@@ -394,7 +394,12 @@ body{
     border: 2px solid rgb(29, 34, 40);
     border-radius: 15px;
     padding: 5px;
-    position: relative;
+    position: absolute;
+    text-shadow: .5px .5px 1px black;
+    box-shadow: .5vw .7vh .7vw black;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
 }
 
 .arrow-left {
@@ -410,13 +415,41 @@ body{
 .arrow-left2 {
     width: 0;
     height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
     position: absolute;
-    border-right:15px solid rgb(255, 255, 255);
-    left: .85vw;
-    bottom: -.85vh;
+    border-right:24px solid rgb(255, 255, 255);
+    left: .34vw;
+    bottom: -1.535vh;
   }
 .splash-container {
     display: flex;
+    flex-direction: column;
+}
+.splash-header{
+    padding: 20px;
+    width: 100vw;
+    height: 10vh;
+    color: rgb(251, 129, 34);
+    font-size:20px;
+    font-weight: bolder;
+    text-shadow: 1px 1px 1px black;
+    text-decoration: solid underline rgb(251, 129, 34) 2px ;
+    background-color: rgb(29, 34, 40);
+    box-sizing:  border-box;
+    display:flex;
+    justify-content: center;
+}
+.bot-container{
+    display :flex;
+    padding-top: 2vh;
+    justify-content: center;
+}
+.chair{
+    height: 400px;
+    width: 300px;
+}
+.desk{
+    height: 470px;
+    width: 550px;
 }
