@@ -80,6 +80,6 @@ def react_root(path):
         return app.send_static_file(path)
     elif 'model-shard' in path:
         return app.send_static_file(path)
-    elif 'robot' in path:
+    elif '.png' in path:
         return app.send_static_file(path)
     return app.send_static_file('index.html')
