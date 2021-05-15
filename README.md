@@ -95,4 +95,3 @@ This is the backend for the Flask React project.
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
-11. profit
