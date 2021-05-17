@@ -8,7 +8,7 @@ Explain a time when you took the initiative on a project.:
 Speak to a specific situation, give credit to your team or coworkers and how you went beyond your daily responsibilities
 /
 Describe how you used your problem-solving skills to benefit a team or company.:
-Speak to the specific situations to demonstrate how you look for solutions for the greater good of the company not just yourself or small team.
+Speak to the specific situations to demonstrate how you look for solutions for the greater good of the company, not just yourself or a small team.
 /
 Tell me about a time when you used creativity to overcome a dilemma.:
 Think about a way that you surprised yourself with an unexpected idea. Did you follow a ‘creative process’? Or was your creativity more spontaneous in the situation?
@@ -46,7 +46,7 @@ Choose a time when you disagreed about a work-related issue, not a personal one,
 Describe a time when you disagreed with a team member. How did you resolve the problem?:
 Explain how you worked through the issue – show off your communication skills, it’s ok if you didn’t come out of the disagreement on top, your interviewer is looking for your ability to handle conflict.
 /
-16. Tell me about a time when you failed in a team project, and how you overcame it.:
+Tell me about a time when you failed in a team project, and how you overcame it.:
  Be honest and show how you can learn from failures. Don’t blame your team members for your failure, focus on the objective reasons that led to team failure and what you learned.
 /
 Tell me about a time when you failed.:
@@ -86,7 +86,7 @@ Describe a time when you were able to motivate unmotivated team members.:
  Focus on your team-building skill set. What do you do to inspire those around you?
 /
 Tell me of a time when you postponed making a decision.:
- Tie it into professional event. Ensure the decision is about something that wasn’t too important.
+ Tie it into a professional event. Ensure the decision is about something that wasn’t too important.
 /
 Give me an example of when you delegated work across an entire team.:
  Focus on how you’re able to see the unique skills of each team member.
@@ -120,6 +120,7 @@ Tell me a time when you had to work unexpectedly on your own.:
 /
 Describe a time when you faced a block at work and how you solved it.:
  Work through your process of resolving blocks.
+
 """
     content_list = content.split('/')
     for question_obj in content_list:
