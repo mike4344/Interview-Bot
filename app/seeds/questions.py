@@ -1,5 +1,5 @@
 from app.models import db, Question
-# Adds a demo user, you can add other users here if you want
+# Adds a demo question, you can add other users here if you want
 def seed_questions():
     content = """Give me an example of when you used logic to solve a problem.:
 Speak to a specific situation, the problem, the resolution and how you came to it, and the results
