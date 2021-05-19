@@ -89,9 +89,9 @@ This is the backend for the Flask React project.
 9. set up your database:
 
    ```bash
+   heroku run -a interviewbotio flask db downgrade
    heroku run -a interviewbotio flask db upgrade
    heroku run -a interviewbotio flask seed all
    ```
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
