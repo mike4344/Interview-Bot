@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@zoomus/websdk": "^1.9.5",
     "aws-sdk": "^2.900.0",
     "canvas": "^2.7.0",
     "face-api.js": "^0.22.2",
@@ -22,7 +23,9 @@
     "react-video-record-mike": "^1.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.2.3"
+    "socket.io-client": "^4.1.2",
+    "styled-components": "^5.2.3",
+    "twilio-video": "^2.14.0"
   },
   "scripts": {
     "start": "react-scripts start",

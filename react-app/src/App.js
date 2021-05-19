@@ -8,6 +8,7 @@ import Interview from "./components/interview"
 import Info from "./components/info"
 import Splash from "./components/splash"
 import { useDispatch } from "react-redux";
+import LiveInterview from "./components/liveInterview"
 
 function App() {
 
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path="/info" exact={true} >
           <Info />
+        </Route>
+        <Route path="/liveinterview" exact={true} >
+          <LiveInterview />
         </Route>
       </Switch>
     </BrowserRouter>
