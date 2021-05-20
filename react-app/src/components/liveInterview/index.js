@@ -15,6 +15,9 @@ function LiveInterview() {
 
   return (
   <div className="app">
+    <div className="instructions">
+
+    </div>
     <VideoChat />
   </div>);
 }

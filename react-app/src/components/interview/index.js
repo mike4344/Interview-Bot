@@ -4,7 +4,9 @@ import {useSelector} from 'react-redux'
 import * as faceapi from 'face-api.js';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 import Speech from 'react-speech';
+import {useHistory} from 'react-router-dom'
 export default function Interview() {
+    const history = useHistory()
     const user = useSelector(state => state.session.user)
     const { transcript, resetTranscript } = useSpeechRecognition()
     const [question, setQuestion] = useState(false)
@@ -72,6 +74,7 @@ export default function Interview() {
         'user_id': user.id
         })
       })
+      history.push('/feedback')
     }
 
 

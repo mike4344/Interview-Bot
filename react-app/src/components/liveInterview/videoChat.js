@@ -10,10 +10,14 @@ function VideoChat () {
   const [roomName, setRoomName] = useState('');
   const [token, setToken] = useState(null);
   const [searching, setSearching] = useState(false)
+  const [questions, setQuestions] = useState(null)
 
   useEffect(()=>{
      socket.once("partner-found", data => {
       setRoomName(data)
+      let getQuestionsJSON = await fetch('/api/questions/live')
+        let getQuestions = await getQuestionsJSON.json()
+        setQuestions(getQuestions.questions)
     })
   }, [])
 
@@ -50,7 +54,14 @@ function VideoChat () {
   let render;
   if (token) {
     render = (
+      <div className='room-container'>
       <Room roomName={roomName} token={token} handleLogout={handleLogout} />
+      <div className='question-instructions'></div>
+      {questions && <div className='questions'>{questions.map(question =>(
+        <div className='question-live'>{question.questions_text}</div>
+      ))}</div>}
+      </div>
+
     );
   } else {
     render = (

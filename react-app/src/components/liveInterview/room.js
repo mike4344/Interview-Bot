@@ -58,7 +58,7 @@ const Room = ({ roomName, token, handleLogout }) => {
           ''
         )}
       </div>
-      <h3>interview</h3>
+      <h3>Interview</h3>
       <div className="remote-participants">{remoteParticipants}</div>
     </div>
   );
