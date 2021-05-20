@@ -12,18 +12,13 @@ function VideoChat () {
   const [searching, setSearching] = useState(false)
 
   useEffect(()=>{
-     socket.on("partner-found", data => {
+     socket.once("partner-found", data => {
       setRoomName(data)
-      console.log(data)
     })
-    // return ()=> {
-    //   socket.removeAllListeners()
-    // }
   }, [])
 
   useEffect(async()=>{
     if(roomName){
-      console.log('i amher')
 
       const data = await fetch('/api/token/', {
         method: 'POST',
@@ -49,6 +44,7 @@ function VideoChat () {
     }
   const handleLogout = useCallback(event => {
     setToken(null);
+    setSearching(prev => !prev);
   }, []);
 
   let render;
@@ -59,7 +55,7 @@ function VideoChat () {
   } else {
     render = (
       <div>
-        {!searching && <button onClick={handleJoin}>Join live interview</button>}
+        {!searching && <button onClick={handleJoin}>Find an interview partner</button>}
         {searching && <p>Looking for partner...</p>}
       </div>
     );

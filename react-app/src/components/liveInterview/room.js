@@ -46,8 +46,8 @@ const Room = ({ roomName, token, handleLogout }) => {
 
   return (
     <div className="room">
-      <h2>Room: {roomName}</h2>
-      <button onClick={handleLogout}>Log out</button>
+      <h2>Welcome to the live interview</h2>
+      <button onClick={handleLogout}>leave interview</button>
       <div className="local-participant">
         {room ? (
           <Participant

@@ -20,4 +20,5 @@ def generate_token_route():
     token = AccessToken(twilio_account_sid, twilio_api_key_sid, twilio_api_key_secret, identity=identity, ttl=3600)
     token.add_grant(VideoGrant(room=room))
     token = token.to_jwt()
+    token = token.decode('utf-8')
     return {'token': token}
