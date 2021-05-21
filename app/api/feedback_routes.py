@@ -22,6 +22,7 @@ def feedback_all(user_id):
 def feedback_handler(feedback_id):
     if request.method == 'GET':
         feedback_query = Feedback.query.filter(Feedback.id == feedback_id).first()
+        feedback = feedback_query.to_dict()
         return {'feedback': feedback}
     elif request.method == 'POST':
         data = request.json

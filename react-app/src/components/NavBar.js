@@ -27,8 +27,14 @@ const NavBar = () => {
           <NavLink className='navlink' to="/interview" exact={true} activeClassName='active'>
            Start an Interview
           </NavLink>
-
         </li>}
+
+       {user && <li className='interview navlink'>
+       <NavLink className='navlink' to="/liveinterview" exact={true} activeClassName='active'>
+           Live Interview
+          </NavLink>
+        </li>}
+
        {user && <li className='feedback navlink'>
           <NavLink className='navlink' to="/feedback" exact={true} activeClassName='active'>
            View Feedback

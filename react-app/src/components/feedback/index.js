@@ -6,6 +6,9 @@ export default function Feedback() {
     const [currentFeedback, setCurrentFeedback] = useState(null);
     const [allFeedback, setAllFeedback] = useState(null);
     const [video, setVideo] = useState(false)
+    const [emotionPercentage, setEmotionPercentage] = useState(-1)
+    const [prevalentEmotion, setPrevalentEmotion] = useState('')
+    const [coEmotions, setCoEmotions] = useState('')
     useEffect(()=>{
       (async ()=> {
             const feedbackJson = await fetch(`/api/feedback/${user.id}/all`)
@@ -14,6 +17,24 @@ export default function Feedback() {
             setCurrentFeedback(feedback.feedback[0])
         })()
     },[])
+
+    const feedbackSorter = (emotion) =>{
+            switch(emotion) {
+                case 'angry':
+                    return 'angry string'
+                case 'disgusted':
+                    return 'disgusted string'
+                case 'fearful':
+                    return 'fearful string'
+                case 'sad':
+                    return 'sad string'
+                case 'neutral':
+                    return 'neutral string'
+                case 'surprised':
+                    return 'surprised string'
+            }
+        }
+
     const parser = (emotionString) =>{
         let splitEmotion = emotionString.split('/')
         return splitEmotion.map(eString => {
@@ -51,17 +72,35 @@ export default function Feedback() {
                             <div className='emotional-feedback'>
                                 <h2 className='bottom-header'>Emotional Feedback</h2>
                                 {
-                                (parser(currentFeedback.feedback_video)).map((e, i) => (
-                                    <div key={i}
+                                (parser(currentFeedback.feedback_video)).map((e, i) =>{
+                                    if (e.percent > emotionPercentage){
+                                        setEmotionPercentage(e.percent)
+                                        setPrevalentEmotion(e.emotion)
+                                        setCoEmotions([e.emotion])
+                                    } else if (e.percent === emotionPercentage) {
+                                        setCoEmotions(prev => [...prev, e.emotion])
+                                    }
+                                    return (<div key={i}
                                     className='emotion'
                                     >
                                         {e.emotion}
                                         {i < 7 && ` ${e.percent}%`}
-                                    </div>
-
-                                ))
+                                    </div>)
+                                 })
                                 }
-                            </div>}
+                                    <div className='emotional-feedback-extended'>
+
+                                    {coEmotions.length > 1 && coEmotions.map(coEmotion =>(
+                                        <div className='co-emotion'>
+                                            {feedbackSorter(coEmotion)}
+                                        </div>
+                                        ))}
+                                    {coEmotions.length <= 1 &&
+                                        <div className='prevalent-emotion'>
+                                            {feedbackSorter(prevalentEmotion)}
+                                        </div>}
+                                    </div>
+                                </div>}
 
                     {!video &&
                     <div className='content'>
