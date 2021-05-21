@@ -44,6 +44,13 @@ def handle_search(user):
     else:
         open_rooms.append(user['username'])
 
+@socketio.on('exit')
+def handle_search(user):
+    print(user)
+    print(open_rooms, '*************************************')
+    if user['username'] in open_rooms:
+        index = open_rooms.index(user['username'])
+        open_rooms.pop(index)
 
 
 

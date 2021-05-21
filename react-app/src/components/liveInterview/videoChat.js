@@ -12,18 +12,24 @@ function VideoChat () {
   const [searching, setSearching] = useState(false)
   const [questions, setQuestions] = useState(null)
 
-  useEffect(()=>{
-     socket.once("partner-found", data => {
-      setRoomName(data)
-      let getQuestionsJSON = await fetch('/api/questions/live')
-        let getQuestions = await getQuestionsJSON.json()
-        setQuestions(getQuestions.questions)
-    })
-  }, [])
+
+  socket.emit('exit', user)
+
+
+  useEffect( ()=>{
+    if(searching){
+      socket.once("partner-found", data => {
+        setRoomName(data)
+      })
+    }
+    return ()=> socket.removeAllListeners()
+  }, [searching])
 
   useEffect(async()=>{
     if(roomName){
-
+        let getQuestionsJSON = await fetch('/api/questions/live')
+        let getQuestions = await getQuestionsJSON.json()
+        setQuestions(getQuestions.questions)
       const data = await fetch('/api/token/', {
         method: 'POST',
         body: JSON.stringify({
@@ -65,8 +71,8 @@ function VideoChat () {
     );
   } else {
     render = (
-      <div>
-        {!searching && <button onClick={handleJoin}>Find an interview partner</button>}
+      <div className='room-container'>
+        {!searching && <button className="switch" onClick={handleJoin}>Find an interview partner</button>}
         {searching && <p>Looking for partner...</p>}
       </div>
     );

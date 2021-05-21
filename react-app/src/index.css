@@ -101,6 +101,14 @@ body{
     grid-template-rows: auto;
     grid-template-areas: 'advice video question';
 }
+.interview-box-live{
+    width: 100vw;
+    display: grid;
+    height: 89.1vh;
+    grid-template-columns: 25vw 50vw 25vw;
+    grid-template-rows: auto;
+    grid-template-areas: 'advice video video' 'advice question question';
+}
 .interview-advice-list-box{
     grid-area: advice;
     background-color: rgb(29, 34, 40);
@@ -109,6 +117,14 @@ body{
     height: 89.1vh;
 }
 .interview-advice-list{
+    box-sizing:  border-box;
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-right: 5px;
+}
+.interview-advice-list-live{
     box-sizing:  border-box;
     list-style: none;
     display: flex;
@@ -133,6 +149,30 @@ body{
     font-weight: bold;
     border-bottom: 1px solid rgb(251, 129, 34);
     margin-top: 10px;
+}
+.interview-advice-live{
+    width: 100%;
+    text-shadow: 1px 1px 1px black;
+    color:  rgb(251, 129, 34);
+    font-size: 14px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-bottom: 1px solid rgb(251, 129, 34);
+    padding: 7px;
+
+}
+.interview-feedback-list{
+    width: 100%;
+    text-shadow: 1px 1px 1px black;
+    color:  rgb(251, 129, 34);
+    font-size: 14px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid rgb(251, 129, 34);
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 .interview-advice-sub{
     margin-top: 10px;
@@ -226,10 +266,32 @@ body{
     border-left: 5px solid rgb(251,129,34);
     border-top: 5px solid rgb(251,129,34);
     justify-content: space-between;
+
+
+}
+.emotional-feedback-extended{
+    text-shadow: 2px 2px 2px black;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(251,129,34);
+    border-radius: 15px;
+    padding-top:5px;
+    padding-bottom:5px;
+    width:95%;
+}
+.emotion-box{
+    display: flex;
+    color: rgb(255, 255, 255);
+    background-color:rgb(29, 34, 40);
+    justify-content: space-between;
     align-content:flex-end;
-    padding-bottom: 10vh;
-
-
+    padding-bottom: 2vh;
 }
 .video{
     grid-area: cen;
@@ -264,6 +326,11 @@ body{
     align-items: center;
     padding-top: 5px;
     text-transform: capitalize;
+    border-bottom:solid rgb(2251, 129 , 34) 2px
+}
+.emotion-container{
+    display: flex;
+    flex-direction: column;
 }
 .question-box{
     grid-area: cen;

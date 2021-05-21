@@ -18,7 +18,7 @@ def live_questions_handler():
     if request.method == 'GET':
         question_list = []
         question_query = Question.query.all()
-        for i in range(6):
+        for i in range(3):
             question_random = question_query[random.randint(0, (len(question_query) - 1))]
             question = question_random.to_dict()
             while question in question_list:

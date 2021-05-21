@@ -9,6 +9,7 @@ export default function Feedback() {
     const [emotionPercentage, setEmotionPercentage] = useState(-1)
     const [prevalentEmotion, setPrevalentEmotion] = useState('')
     const [coEmotions, setCoEmotions] = useState('')
+    const [feedbackSwitch, setFeedbackSwitch] = useState(false)
     useEffect(()=>{
       (async ()=> {
             const feedbackJson = await fetch(`/api/feedback/${user.id}/all`)
@@ -16,23 +17,46 @@ export default function Feedback() {
             setAllFeedback(feedback.feedback)
             setCurrentFeedback(feedback.feedback[0])
         })()
-    },[])
+    },[feedbackSwitch])
+    const deleteHandler = async (e) => {
+        let feedbackId = e.target.id
+        await fetch(`/api/feedback/${feedbackId}`, {method: 'DELETE'})
+        setFeedbackSwitch(!feedbackSwitch)
+    }
 
-    const feedbackSorter = (emotion) =>{
-            switch(emotion) {
+
+    useEffect(() =>{
+        if(currentFeedback){
+            parser(currentFeedback.feedback_video).forEach( e =>{
+                if (e.percent !== '' && e.percent > emotionPercentage){
+                    setEmotionPercentage(e.percent)
+                    setPrevalentEmotion(e.emotion)
+                    setCoEmotions([e.emotion])
+                }
+                // else if (e.percent === emotionPercentage) {
+                //     setCoEmotions(prev => [...prev, e.emotion])
+                // }
+            })
+        }
+    }, [currentFeedback])
+
+    const feedbackSorter = () =>{
+            switch(prevalentEmotion) {
                 case 'angry':
-                    return 'angry string'
+                    return 'One of the most prominent emotion that the facial recognition picked up is anger, you want to be cautious of displaying this emotion. While anger may be an appropriate response in the right context be mindful of overuse as it can come off aggressive.'
                 case 'disgusted':
-                    return 'disgusted string'
+                    return 'One of the most prominent emotion that the facial recognition picked up is disgust, you want to be cautious of displaying this emotion. While disgust may be an appropriate response in the right context be mindful of overuse as it can come off negatively.'
                 case 'fearful':
-                    return 'fearful string'
+                    return 'One of the most prominent emotion that the facial recognition picked up is fear, you want to be cautious of displaying this emotion. This may display a lack of confidence. You want to avoid this as if you do not seem confident in yourself the interviewer won\'t either.'
                 case 'sad':
-                    return 'sad string'
+                    return 'One of the most prominent emotion that the facial recognition picked up is sadness, you want to be cautious of displaying this emotion. While sadness may be an appropriate response in the right context be mindful of overuse as it can come off as unhappy about the opportunity.'
                 case 'neutral':
-                    return 'neutral string'
+                    return 'One of the most prominent emotion that the facial recognition picked up is neutrality, this response is ok. It would be optimal to appear happy most of the time but it is not a bad thing to be neutral at points'
                 case 'surprised':
-                    return 'surprised string'
-            }
+                    return 'One of the most prominent emotion that the facial recognition picked up is surprise, it is ok to appear surprised at times as it can show a deeper level of engagement with the question, however this should not be your most prominent emotion. '
+                case 'happy':
+                    return 'One of the most prominent emotion that the facial recognition picked up is happiness, this is the best possible outcome. You want to seem happy about the opportunity and they can really see themselves working with a positive person like you!'
+                                }
         }
 
     const parser = (emotionString) =>{
@@ -47,11 +71,12 @@ export default function Feedback() {
             <div className='interview-advice-list-box'>
                 <ul className='interview-advice-list feedback'>
                 {allFeedback && allFeedback.map((feedback, i) =>(
-                    <li key={i} id={i} className = 'interview-advice'
+                    <li key={i} id={i} className = 'interview-feedback-list'
                     onClick={()=>{
                         setCurrentFeedback(allFeedback[i])
                     }}
                     >{feedback.question.questions_text}
+                    {currentFeedback === feedback && <button className="button" id={feedback.id} onClick={deleteHandler}>Delete</button>}
                     </li>
                     ))}
                 </ul>
@@ -71,23 +96,19 @@ export default function Feedback() {
                        {video &&
                             <div className='emotional-feedback'>
                                 <h2 className='bottom-header'>Emotional Feedback</h2>
-                                {
-                                (parser(currentFeedback.feedback_video)).map((e, i) =>{
-                                    if (e.percent > emotionPercentage){
-                                        setEmotionPercentage(e.percent)
-                                        setPrevalentEmotion(e.emotion)
-                                        setCoEmotions([e.emotion])
-                                    } else if (e.percent === emotionPercentage) {
-                                        setCoEmotions(prev => [...prev, e.emotion])
+                                <div className='emotion_container'>
+                                    <div className='emotion-box'>
+                                    {
+                                    (parser(currentFeedback.feedback_video)).map((e, i) =>(
+                                        <div key={i}
+                                        className='emotion'
+                                        >
+                                            {e.emotion}
+                                            {i < 7 && ` ${e.percent}%`}
+                                        </div>)
+                                    )
                                     }
-                                    return (<div key={i}
-                                    className='emotion'
-                                    >
-                                        {e.emotion}
-                                        {i < 7 && ` ${e.percent}%`}
-                                    </div>)
-                                 })
-                                }
+                                    </div>
                                     <div className='emotional-feedback-extended'>
 
                                     {coEmotions.length > 1 && coEmotions.map(coEmotion =>(
@@ -100,7 +121,8 @@ export default function Feedback() {
                                             {feedbackSorter(prevalentEmotion)}
                                         </div>}
                                     </div>
-                                </div>}
+                                </div>
+                            </div>}
 
                     {!video &&
                     <div className='content'>
@@ -116,7 +138,7 @@ export default function Feedback() {
                             <div className='title'> Answer Transcript: </div>  {currentFeedback.feedback_text.split(':')[0]}
                         </div   >
                                 <div className='emotional-feedback'>
-                                 <h2 className='bottom-header'>Likelyhood to offend {currentFeedback.feedback_text.split(':')[1]} %
+                                 <h2 className='bottom-header'>Likelihood to offend {currentFeedback.feedback_text.split(':')[1]} %
                                  </h2>
                             </div>
                     </div>}

@@ -56,7 +56,10 @@ def feedback_handler(feedback_id):
     elif request.method == 'DELETE':
         feedback_query = Feedback.query.filter(Feedback.id == feedback_id).first()
         feedback = feedback_query.to_dict()
-        video_query = Video.query.filter(Video.id == feedback.video_id).first()
+        print(feedback)
+        feedback_video_id = feedback['video_id']
+        video_query = Video.query.filter(Video.id == feedback_video_id).first()
         db.session.delete(video_query)
         db.session.delete(feedback_query)
         db.session.commit()
+        return feedback
