@@ -77,7 +77,7 @@ function VideoChat () {
     render = (
       <div className='room-container'>
         {!searching && <button className="switch" onClick={handleJoin}>Find an interview partner</button>}
-        {searching && <p>Looking for partner...</p>}
+        {searching && <img className="searching" src='/Searching.gif' />}
       </div>
     );
   }
