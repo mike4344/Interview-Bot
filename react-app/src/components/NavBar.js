@@ -4,9 +4,15 @@ import LogoutButton from './auth/LogoutButton';
 import LoginModal from '../components/Modals/loginform'
 import SignupModal from '../components/Modals/signup'
 import {useSelector} from 'react-redux'
+import { login } from "../store/session";
+import {useDispatch} from 'react-redux'
 
 const NavBar = () => {
+  let dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
+  let demoHandler = () => {
+    dispatch(login('demo@aa.io', 'password'))
+  }
   return (
     <nav className="navbar">
       <ul className="navbar-list">
@@ -46,6 +52,9 @@ const NavBar = () => {
           </li>}
         {!user && <li className='signup navlink'>
          <SignupModal />
+        </li>}
+        {!user && <li className='signup navlink'>
+         <button className='button' onClick={demoHandler}>Demo</button>
         </li>}
         { user &&
           <li className='logout navlink'>

@@ -6,9 +6,7 @@ export default function Feedback() {
     const [currentFeedback, setCurrentFeedback] = useState(null);
     const [allFeedback, setAllFeedback] = useState(null);
     const [video, setVideo] = useState(false)
-    const [emotionPercentage, setEmotionPercentage] = useState(-1)
     const [prevalentEmotion, setPrevalentEmotion] = useState('')
-    const [coEmotions, setCoEmotions] = useState('')
     const [feedbackSwitch, setFeedbackSwitch] = useState(false)
     useEffect(()=>{
       (async ()=> {
@@ -27,16 +25,15 @@ export default function Feedback() {
 
     useEffect(() =>{
         if(currentFeedback){
+            let prevalent = ''
+            let percent = -1
             parser(currentFeedback.feedback_video).forEach( e =>{
-                if (e.percent !== '' && e.percent > emotionPercentage){
-                    setEmotionPercentage(e.percent)
-                    setPrevalentEmotion(e.emotion)
-                    setCoEmotions([e.emotion])
+                if (e.percent !== '' && e.percent > percent){
+                    percent = e.percent
+                    prevalent = e.emotion
                 }
-                // else if (e.percent === emotionPercentage) {
-                //     setCoEmotions(prev => [...prev, e.emotion])
-                // }
             })
+            setPrevalentEmotion(prevalent)
         }
     }, [currentFeedback])
 
@@ -58,6 +55,26 @@ export default function Feedback() {
                     return 'One of the most prominent emotion that the facial recognition picked up is happiness, this is the best possible outcome. You want to seem happy about the opportunity and they can really see themselves working with a positive person like you!'
                                 }
         }
+
+    const checkForRepeats = (transcript) => {
+        let words = transcript.split(' ')
+        let wordCounts = {}
+        words.forEach(word => {
+            if (wordCounts[word]){
+                wordCounts[word] += 1
+            } else {
+                wordCounts[word] = 1
+            }
+        })
+        let topWords = []
+        for (let i = 0; i < 3; i++) {
+            let topWord = Object.keys(wordCounts).reduce((currentMax, currentCheck) => wordCounts[currentMax] > wordCounts[currentCheck] ? currentMax : currentCheck);
+            topWords.push({'word' : topWord, 'count' :wordCounts[topWord]})
+            wordCounts[topWord] = 0
+        }
+        return topWords
+
+    }
 
     const parser = (emotionString) =>{
         let splitEmotion = emotionString.split('/')
@@ -85,13 +102,13 @@ export default function Feedback() {
                 <div className="feedback-container">
                     <button className='switch' onClick={()=> setVideo(!video)}>{video ? 'Switch to text' : "Switch to video"}</button>
                    {video && <div className='video'>
-                    <ReactPlayer className='video player'
-                    controls={true}
-                    style={{}}
-                    height='30vw'
-                    width='50vw'
-                    url={currentFeedback.video.video} />
-                    <img className='robot_corner' src='/robot-corner.png' />
+                        <ReactPlayer className='video player'
+                        controls={true}
+                        style={{}}
+                        height='30vw'
+                        width='50vw'
+                        url={currentFeedback.video.video} />
+                        <img className='robot_corner' src='/robot-corner.png' />
                     </div>}
                        {video &&
                             <div className='emotional-feedback'>
@@ -111,12 +128,8 @@ export default function Feedback() {
                                     </div>
                                     <div className='emotional-feedback-extended'>
 
-                                    {coEmotions.length > 1 && coEmotions.map(coEmotion =>(
-                                        <div className='co-emotion'>
-                                            {feedbackSorter(coEmotion)}
-                                        </div>
-                                        ))}
-                                    {coEmotions.length <= 1 &&
+
+                                    {prevalentEmotion.length > 0 &&
                                         <div className='prevalent-emotion'>
                                             {feedbackSorter(prevalentEmotion)}
                                         </div>}
@@ -136,11 +149,20 @@ export default function Feedback() {
                         </div>
                             <div className='text-feedback'>
                             <div className='title'> Answer Transcript: </div>  {currentFeedback.feedback_text.split(':')[0]}
-                        </div   >
+                        </div>
                                 <div className='emotional-feedback'>
-                                 <h2 className='bottom-header'>Likelihood to offend {currentFeedback.feedback_text.split(':')[1]} %
+                                 <h2 className='bottom-header'>Likelihood to Offend <span style={{color: + currentFeedback.feedback_text.split(':')[1] < 30 ? 'green': currentFeedback.feedback_text.split(':')[1] < 60 ? 'yellow':currentFeedback.feedback_text.split(':')[1] > 59 ? 'red': 'white' }}>{currentFeedback.feedback_text.split(':')[1]}%</span>
                                  </h2>
-                            </div>
+                                 <div className="text-feedback-box">
+                                 <div className='text-feedback-info'> These were the top three most frequent words you used. This is not necessarily a bad thing just feedback to be mindful of</div>
+                                    <div className='frequent-word-container'>
+                                    { checkForRepeats(currentFeedback.feedback_text.split(':')[0]).map((topWord, rank) => (
+                                        <div className='frequent-word'>{rank===0?"first": rank===1?"second":rank===2?"third":'no'}: "{topWord.word}" was said {topWord.count} times</div>
+                                    ))
+                                    }
+                                    </div>
+                                    </div>
+                                </div>
                     </div>}
                     {!video && <img className='standing-robot' src='/robotstanding.png' />}
                 </div>

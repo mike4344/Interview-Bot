@@ -284,6 +284,7 @@ body{
     padding-top:5px;
     padding-bottom:5px;
     width:95%;
+    text-shadow: 2px 2px 1px black;
 }
 .emotion-box{
     display: flex;
@@ -522,4 +523,24 @@ body{
     height: 550px;
     width: 800px;
     transform: translate(2vw, 7vh);
+}
+.frequent-word-container{
+    display: flex;
+    justify-content: space-around;
+
+}
+.frequent-word{
+    background-color: rgb(251, 129, 34);
+    border-radius: 15px;
+    padding: 5px;
+    text-transform: capitalize;
+    font-size: 20px;
+    text-shadow: 2px 2px 1px black;
+}
+.text-feedback-info{
+    padding: 10px;
+
+}
+.text-feedback-box{
+    width: 100%;
 }

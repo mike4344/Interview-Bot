@@ -13,7 +13,9 @@ function VideoChat () {
   const [questions, setQuestions] = useState(null)
 
 
-  socket.emit('exit', user)
+  useEffect(() =>{
+    socket.emit('exit', user)
+  },[])
 
 
   useEffect( ()=>{
@@ -54,6 +56,8 @@ function VideoChat () {
     }
   const handleLogout = useCallback(event => {
     setToken(null);
+    socket.emit('exit', user)
+    setRoomName(null);
     setSearching(prev => !prev);
   }, []);
 
