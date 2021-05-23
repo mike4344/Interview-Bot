@@ -26,6 +26,11 @@ const NavBar = () => {
             Interview Guide
           </NavLink>
         </li>
+        <li className='info navlink'>
+          <NavLink className='navlink' to="/about" exact={true} activeClassName='active'>
+            About The Developer
+          </NavLink>
+        </li>
 
 
        {user && <li className='interview navlink'>

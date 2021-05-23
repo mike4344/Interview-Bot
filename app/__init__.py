@@ -114,6 +114,10 @@ def react_root(path):
         return app.send_static_file(path)
     elif '.png' in path:
         return app.send_static_file(path)
+    elif '.gif' in path:
+        return app.send_static_file(path)
+    elif '.jpg' in path:
+        return app.send_static_file(path)
     return app.send_static_file('index.html')
 if __name__ == '__main__':
     socketio.run(app)

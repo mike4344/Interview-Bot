@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Feedback from "./components/feedback";
 import { authenticate } from "./store/session";
 import Interview from "./components/interview"
@@ -9,6 +8,7 @@ import Info from "./components/info"
 import Splash from "./components/splash"
 import { useDispatch } from "react-redux";
 import LiveInterview from "./components/liveInterview"
+import About from './components/about'
 
 function App() {
 
@@ -32,6 +32,9 @@ function App() {
       <Switch>
         <Route path="/interview" exact={true} >
           <Interview />
+        </Route>
+        <Route path="/about" exact={true} >
+          <About />
         </Route>
         <Route path="/feedback" exact={true}>
           <Feedback />

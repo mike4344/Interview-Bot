@@ -48,18 +48,20 @@ const Room = ({ roomName, token, handleLogout }) => {
     <div className="room">
       <button className='switch' onClick={handleLogout}>leave interview</button>
       <h2>Welcome to the live interview</h2>
+      <div className="live-video-box">
+
       <div className="local-participant">
         {room ? (
           <Participant
-            key={room.localParticipant.sid}
-            participant={room.localParticipant}
+          key={room.localParticipant.sid}
+          participant={room.localParticipant}
           />
-        ) : (
+          ) : (
           ''
         )}
       </div>
-      <h3>Interview</h3>
       <div className="remote-participants">{remoteParticipants}</div>
+    </div>
     </div>
   );
 };
