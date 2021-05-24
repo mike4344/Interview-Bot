@@ -51,14 +51,14 @@ function VideoChat () {
   const handleJoin =
     async event => {
       event.preventDefault();
-      setSearching(prev => !prev)
+      setSearching(true)
       socket.emit('searching', user)
     }
   const handleLogout = useCallback(event => {
     setToken(null);
     socket.emit('exit', user)
     setRoomName(null);
-    setSearching(prev => !prev);
+    setSearching(false);
   }, []);
 
   let render;
@@ -66,10 +66,12 @@ function VideoChat () {
     render = (
       <div className='room-container'>
       <Room roomName={roomName} token={token} handleLogout={handleLogout} />
-      <div className='question-instructions'></div>
+      <div className='question-instructions'>
+      Practice Interview Questions
       {questions && <div className='questions'>{questions.map(question =>(
         <div className='question-live'>{question.questions_text}</div>
-      ))}</div>}
+        ))}</div>}
+        </div>
       </div>
 
     );
@@ -77,7 +79,9 @@ function VideoChat () {
     render = (
       <div className='room-container'>
         {!searching && <button className="switch" onClick={handleJoin}>Find an interview partner</button>}
+        {searching && <button className="switch" onClick={handleLogout}>Cancel Search</button>}
         {searching && <img className="searching" src='/robot-searching.gif' />}
+        {!searching && <img className='searching' src='liveinterview.png' />}
       </div>
     );
   }
