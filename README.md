@@ -21,7 +21,7 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![LinkedIn][linkedin-shield]][www.linkedin.com/in/michaelmihalchik]
+![LinkedIn][linkedin-shield]][www.linkedin.com/in/michaelmihalchik]
 
 
 
