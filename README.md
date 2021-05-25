@@ -29,7 +29,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/mike4344/Interviewer-Bot">
-    <img src="react-app/android-chrome-192x192.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/android-chrome-192x192.png?raw=true" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Interview Bot</h3>
