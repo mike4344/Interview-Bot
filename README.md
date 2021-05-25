@@ -21,7 +21,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-![LinkedIn][linkedin-shield]][www.linkedin.com/in/michaelmihalchik]
 
 
 
@@ -81,7 +80,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Interview Bot][product-GIF]](https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/robotsplash.gif?raw=true)
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
