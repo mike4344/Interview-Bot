@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {useSelector} from 'react-redux'
 import ReactPlayer from 'react-player'
+import {useHistory} from 'react-router-dom'
 export default function Feedback() {
+    const history = useHistory()
     const user = useSelector(state => state.session.user)
     const [currentFeedback, setCurrentFeedback] = useState(null);
     const [allFeedback, setAllFeedback] = useState(null);
@@ -12,6 +14,7 @@ export default function Feedback() {
       (async ()=> {
             const feedbackJson = await fetch(`/api/feedback/${user.id}/all`)
             let feedback = await feedbackJson.json()
+            if (feedback.feedback.length === 0 ) history.push('/interview')
             setAllFeedback(feedback.feedback)
             setCurrentFeedback(feedback.feedback[0])
         })()

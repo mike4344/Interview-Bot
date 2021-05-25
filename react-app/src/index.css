@@ -181,7 +181,7 @@ body {
   grid-area: question;
   width: 25vw;
   display: flex;
-  background-color: rgb(rgb(255, 226, 226));
+  background-color: rgb(255, 255, 255);
   align-items: center;
   flex-direction: column;
 }
@@ -414,6 +414,14 @@ body {
   width: 65vw;
   height: 89.1vh;
 }
+.interview-guide{
+  position: absolute;
+  right: 0;
+  top: 10.7vh;
+  height: 89.1vh;
+  width: 34.7vw
+
+}
 .interview_info::-webkit-scrollbar {
   width: 0.3rem;
 }
@@ -458,6 +466,7 @@ body {
   text-transform: capitalize;
   font-size: 20px;
   text-shadow: 2px 2px 1px black;
+  margin: 4px;
 }
 .text-feedback-info {
   padding: 10px;

@@ -36,7 +36,7 @@ export default function Interview() {
           <li className='interview-advice-sub'>Really try to show them your personality, they need to be able to see themselves working with you. Try to come across as someone you would want to work with too, while they need to know you have the specific job skills, they are also interviewing you to see if you would be a good cultural fit with their team. Good luck have fun and get that job!</li>
         </ul>
 
-          <img className="robot-standing-info" src='/robotstanding.png' />
+          <img className="interview-guide" src='/interviewGuide.png' />
 		</div>
 	);
 }

@@ -113,7 +113,7 @@ export default function Interview() {
         voice="Google UK English Male"
         textAsButton={true}
         text ={question.questions_text} />
-    <img src="https://i.pinimg.com/originals/50/38/f6/5038f6672f089f3a50c4f075feddfc42.gif" />
+    <img src="/robot-waving.gif" />
     </div>}
 		</div>
 	);
