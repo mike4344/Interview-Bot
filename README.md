@@ -80,7 +80,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Interview Bot][product-GIF]](https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/robotsplash.gif?raw=true)
+   <img src="https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/android-chrome-192x192.png?raw=true" alt="Logo" width="80" height="80">
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
