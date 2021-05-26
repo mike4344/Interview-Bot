@@ -39,7 +39,7 @@
     <a href="https://github.com/mike4344/Interview-Bot/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/mike4344/Interview-Bot">View Demo</a>
+    <a href="https://interviewbotio.herokuapp.com">View Live Site</a>
     ·
     <a href="https://github.com/mike4344/Interview-Bot/issues">Report Bug</a>
     ·
