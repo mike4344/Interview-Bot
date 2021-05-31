@@ -10,7 +10,7 @@ Interview Bot is a series of tools for job seekers
 ## Features
 
 - Perform virtual interviews on demand with random interview question
-- Recieve feedback on facial expressions and your answer to the interview question
+- Receive feedback on facial expressions and your answer to the interview question
 - Perform live video interviews with random User
 - Virtual interview guide
 
@@ -18,81 +18,44 @@ Interview Bot is a series of tools for job seekers
 
 Interview Bot uses a number of open source projects to work properly:
 
-- ReactJS - HTML enhanced for web apps!
-- Flask - awesome web-based text editor
-- Web Sockets - Markdown parser done right. Fast and easy to extend.
-- Twilio API - great UI boilerplate for modern web apps
-- Face-API - evented I/O for the backend
-- AWS S3 - fast node.js network app framework [@tjholowaychuk]
-- Profanity-check - the streaming build system
-- PostgreSQL - HTML
-- Redux - duh
+- ReactJS -
+- Flask -
+- Web Sockets -
+- Twilio API -
+- Face-API -
+- AWS S3 -
+- Profanity-check -
+- PostgreSQL -
+- Redux -
 
 ## Installation
 
 Install the dependencies and devDependencies and start the server.
 
 ```sh
-git clone https://github.com/mike4344/Interview-Bot
+git clone https://github.com/mike4344/Interview-Bot.git
 cd create react-app
 npm install
 cd ..
 pipenv shell
-pip
+pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+
 ```
 
 
-## Plugins
+## Features
 
-Dillinger is currently extended with the following plugins.
-Instructions on how to use them in your own application are linked below.
+Users can perform virtual interviews with random curated interview questions. Users can record their answer as well as have the question read aloud to them.
+![Interview page](https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/interview-screen.png?raw=true)
 
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
 
-## Development
-
-Want to contribute? Great!
-
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantaneously see your updates!
-
-Open your favorite Terminal and run these commands.
-
-First Tab:
-
-```sh
-node app
-```
-
-Second Tab:
-
-```sh
-gulp watch
-```
-
-(optional) Third:
-
-```sh
-karma test
-```
-
-#### Building for source
-
-For production release:
-
-```sh
-gulp build --prod
-```
-
-Generating pre-built zip archives for distribution:
-
-```sh
-gulp build dist --prod
-```
+Users receive feedback on
+![Interview page](https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/interview-guide-screen.png?raw=true)
+Users receive feedback on
+![Interview page](https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/graphic%20for%20searching.gif?raw=true)
+Users receive feedback on
+![Interview page](https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/text-feedback-screen.png?raw=true)
+Users receive feedback on
+![Interview page](https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/video-feedback-screen.png?raw=true)
+![Interview page](https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/live-chat-screen.png?raw=true)
+![Interview page](https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/live-interview-screen.png?raw=true)
