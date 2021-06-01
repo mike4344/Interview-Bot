@@ -1,5 +1,3 @@
-# Interview Bot, An interview practice platform
-
 ![Intro](https://github.com/mike4344/Interview-Bot/blob/main/react-app/public/robotsplash.gif?raw=true)
 # Interview Bot
 ## _Interview Prep Platform_
