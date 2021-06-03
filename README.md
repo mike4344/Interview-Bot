@@ -32,12 +32,12 @@ Install the dependencies and devDependencies and start the server.
 
 ```sh
 git clone https://github.com/mike4344/Interview-Bot.git
-cd create react-app
+cd react-app
 npm install
 cd ..
 pipenv shell
 pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-
+flask run
 ```
 
 
