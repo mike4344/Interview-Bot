@@ -16,7 +16,7 @@ const MailForm = () => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: formData
+        body: JSON.stringify(formData)
     })
     return <Redirect to="/" />;
     }
@@ -35,33 +35,33 @@ const MailForm = () => {
     <form className="form-container" onSubmit={onMail}>
       <div>
         <label>Do you have any feedback on the website?</label>
-        <input
+        <textarea
          className="textarea"
          type="textarea"
          name="feedback"
           onChange={updateFeedback}
           value={feedback}
-        ></input>
+        ></textarea>
       </div>
       <div>
         <label>Is there any features you would like to see implemented?</label>
-        <input
+        <textarea
          className="textarea"
          type="textarea"
          name="feature"
           onChange={updateFeature}
           value={feature}
-        ></input>
+        ></textarea>
       </div>
       <div>
         <label>If you experienced any bugs, please share your experience?</label>
-        <input
+        <textarea
          className="textarea"
          type="textarea"
          name="bugs"
           onChange={updateBugs}
           value={bugs}
-        ></input>
+        ></textarea>
       </div>
       <button className="button signup" type="submit">Send Feedback</button>
     </form>

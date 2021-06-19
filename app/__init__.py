@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 from flask_socketio import SocketIO, emit
-from flask_mail import Mail
+from flask_mail import Mail, Message
 
 from .models import db, User
 from .api.user_routes import user_routes
@@ -64,13 +64,14 @@ app.config['MAIL_USE_SSL'] = True
 
 mail = Mail(app)
 
-@app.route('/mail')
+@app.route('/mail', methods=['POST'])
 def mail_handler():
     msg = Message('Feedback form', sender ='noreplymikemihalchik@gmail.com', recipients = ['mikemihalchik@gmail.com'])
     data = request.json
     msg.body = data['body']
     mail.send(msg)
-    return "Message sent!"
+    return {"Success": "true"}
+
 
 
 
@@ -89,6 +90,7 @@ app.register_blueprint(feedback_routes, url_prefix='/api/feedback')
 app.register_blueprint(questions_routes, url_prefix='/api/questions')
 app.register_blueprint(videos_routes, url_prefix='/api/videos')
 app.register_blueprint(token_route, url_prefix='/api/token')
+#app.register_blueprint(mail_route, url_prefix='/api/mail')
 db.init_app(app)
 Migrate(app, db)
 
@@ -115,7 +117,6 @@ def inject_csrf_token(response):
                             'FLASK_ENV') == 'production' else None,
                         httponly=True)
     return response
-
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
