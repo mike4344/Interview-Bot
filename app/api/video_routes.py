@@ -9,7 +9,7 @@ videos_routes = Blueprint('videos', __name__)
 
 
 @videos_routes.route('/<video_id>/<question_id>/<user_id>', methods=['GET', 'POST'])
-def fvideos_handler(video_id, question_id, user_id):
+def videos_handler(video_id, question_id, user_id):
     if request.method == 'GET':
         video_query = Video.query.filter(Video.id == video_id).first()
         video = video_query.to_dict()
@@ -17,11 +17,8 @@ def fvideos_handler(video_id, question_id, user_id):
     elif request.method == 'POST':
         if ("video" in request.files):
             video=request.files["video"]
-            print(video, 'video')
             video.filename = get_unique_filename(video.filename)
-            print(video.filename, 'video.filename')
             upload = upload_file_to_s3(video)
-            print(upload, 'upload')
             if 'url' in upload:
                 url = upload["url"]
             else:

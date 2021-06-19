@@ -26,8 +26,6 @@ def feedback_handler(feedback_id):
         return {'feedback': feedback}
     elif request.method == 'POST':
         data = request.json
-
-
         feedback_text= data['feedback_text']
         feedback_video = data['feedback_video']
         if '*' in feedback_text:

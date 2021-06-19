@@ -414,13 +414,12 @@ body {
   width: 65vw;
   height: 89.1vh;
 }
-.interview-guide{
+.interview-guide {
   position: absolute;
   right: 0;
   top: 10.7vh;
   height: 89.1vh;
-  width: 34.7vw
-
+  width: 34.7vw;
 }
 .interview_info::-webkit-scrollbar {
   width: 0.3rem;
@@ -611,4 +610,22 @@ body {
   text-decoration: solid underline rgb(251, 129, 34) 5px;
   border-radius: 15px;
   box-shadow: 2vh 2vh 2vh black;
+}
+.mail {
+  position: absolute;
+  bottom: 5px;
+  right: 41%;
+  height: 10vh;
+  background-color: rgba(29, 34, 40, 0.7);
+  border-radius: 15px;
+}
+.textarea {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 20vh;
+  background-color: rgb(225, 226, 226);
+  border-radius: 15px;
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
