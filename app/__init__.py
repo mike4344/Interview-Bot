@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 from flask_socketio import SocketIO, emit
+from flask_mail import Mail
 
 from .models import db, User
 from .api.user_routes import user_routes
@@ -31,10 +32,12 @@ if os.environ.get("FLASK_ENV") == "production":
     ]
 else:
     origins = "*"
-
+# Match making for live interview
 socketio = SocketIO(app, cors_allowed_origins=origins)
 
 open_rooms = []
+
+
 
 @socketio.on('searching')
 def handle_search(user):
@@ -51,6 +54,23 @@ def handle_search(user):
     if user['username'] in open_rooms:
         index = open_rooms.index(user['username'])
         open_rooms.pop(index)
+# Mail
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
+
+@app.route('/mail')
+def mail_handler():
+    msg = Message('Feedback form', sender ='noreplymikemihalchik@gmail.com', recipients = ['mikemihalchik@gmail.com'])
+    data = request.json
+    msg.body = data['body']
+    mail.send(msg)
+    return "Message sent!"
 
 
 
