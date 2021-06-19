@@ -68,9 +68,8 @@ mail = Mail(app)
 def mail_handler():
     msg = Message('Feedback form', sender ='noreplymikemihalchik@gmail.com', recipients = ['mikemihalchik@gmail.com'])
     data = request.json
-    print(data, '----------------------------------')
-    # msg.body = data
-    # mail.send(msg)
+    msg.body = data['body']
+    mail.send(msg)
     return {"Success": "true"}
 
 
