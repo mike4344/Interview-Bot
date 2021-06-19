@@ -613,5 +613,16 @@ body {
 }
 .mail {
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
+  right: 41%;
+  height: 10vh;
+  background-color: rgba(29, 34, 40, 0.7);
+  border-radius: 15px;
+}
+.textarea {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 10vh;
+  background-color: rgb(225, 226, 226);
 }

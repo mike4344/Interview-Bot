@@ -7,7 +7,7 @@ export default function Interview() {
 		<div className='splash-container'>
             <div className='link-container-left'></div>
            <img className='splash-gif' src='/robotsplash.gif' />
-           <MailModal className='mail' />
+           <MailModal />
             <div className='link-container-right'></div>
 		</div>
 	);

@@ -7,7 +7,7 @@ function MailModal() {
 
   return (
     <>
-      <button className='navlink button' onClick={() => setShowModal(true)}>How are you liking the site so far?</button>
+      <button className='mail button' onClick={() => setShowModal(true)}>Have Feedback on Interview Bot?</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <Mail />

@@ -36,7 +36,7 @@ const MailForm = () => {
       <div>
         <label>Do you have any feedback on the website?</label>
         <input
-         className="form-input textarea"
+         className="textarea"
          type="textarea"
          name="feedback"
           onChange={updateFeedback}
@@ -46,7 +46,7 @@ const MailForm = () => {
       <div>
         <label>Is there any features you would like to see implemented?</label>
         <input
-         className="form-input textarea"
+         className="textarea"
          type="textarea"
          name="feature"
           onChange={updateFeature}
@@ -56,7 +56,7 @@ const MailForm = () => {
       <div>
         <label>If you experienced any bugs, please share your experience?</label>
         <input
-         className="form-input textarea"
+         className="textarea"
          type="textarea"
          name="bugs"
           onChange={updateBugs}
