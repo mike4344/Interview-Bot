@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
 
 const MailForm = () => {
   const [feedback, setFeedback] = useState("");
   const [feature, setFeature] = useState("");
   const [bugs, setBugs] = useState("");
+  const [trigger, setTrigger] = useState(false);
 
   const onMail = async (e) => {
     e.preventDefault();
@@ -16,9 +16,9 @@ const MailForm = () => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({body: body})
     })
-    return <Redirect to="/" />;
+    setTrigger(true)
     }
 
   const updateFeedback = (e) => {
@@ -31,41 +31,53 @@ const MailForm = () => {
     setBugs(e.target.value);
   };
 
- return (
+ if (trigger === false)return (
     <form className="form-container" onSubmit={onMail}>
-      <div>
-        <label>Do you have any feedback on the website?</label>
-        <textarea
-         className="textarea"
-         type="textarea"
-         name="feedback"
-          onChange={updateFeedback}
-          value={feedback}
-        ></textarea>
-      </div>
-      <div>
-        <label>Is there any features you would like to see implemented?</label>
-        <textarea
-         className="textarea"
-         type="textarea"
-         name="feature"
-          onChange={updateFeature}
-          value={feature}
-        ></textarea>
-      </div>
-      <div>
-        <label>If you experienced any bugs, please share your experience?</label>
-        <textarea
-         className="textarea"
-         type="textarea"
-         name="bugs"
-          onChange={updateBugs}
-          value={bugs}
-        ></textarea>
-      </div>
-      <button className="button signup" type="submit">Send Feedback</button>
+    <div>
+    <label>Do you have any feedback on the website?</label>
+    <textarea
+        className="textarea"
+        type="textarea"
+        name="feedback"
+        onChange={updateFeedback}
+        value={feedback}
+    ></textarea>
+    </div>
+    <div>
+    <label>Is there any features you would like to see implemented?</label>
+    <textarea
+        className="textarea"
+        type="textarea"
+        name="feature"
+        onChange={updateFeature}
+        value={feature}
+    ></textarea>
+    </div>
+    <div>
+    <label>If you experienced any bugs, please share your experience?</label>
+    <textarea
+        className="textarea"
+        type="textarea"
+        name="bugs"
+        onChange={updateBugs}
+        value={bugs}
+    ></textarea>
+    </div>
+    <button className="button signup" type="submit">Send Feedback</button>
     </form>
   );
+  if (trigger === true) {
+      return (
+        <form className="form-container">
+        <div>
+        Thank you for your feedback!
+        </div>
+        <div>
+        Click outside of this box to continue
+        </div>
+        </form>
+      )
+  }
 };
 
 export default MailForm;
