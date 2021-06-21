@@ -1,8 +1,11 @@
-/* TODO Add site wide styles
+/*
+Color Scheme
 orange #FB8122 rgb(251, 129, 34)
 darkgrey #1D2228 rgb(29, 34, 40)
 grey #E1E2E2 rgb(225, 226, 226)
 */
+
+/* Site wide styles */
 * {
   font-family: "Proxima Nova", "Helvetica Neue", "Helvetica", "Arial";
   box-sizing: border-box;
@@ -28,6 +31,9 @@ body {
   overflow-x: hidden;
   background-color: #1d2228;
 }
+
+/* Navbar / Button styles */
+
 .navbar {
   width: 100vw;
   background-color: rgb(29, 34, 40);
@@ -86,6 +92,9 @@ body {
   transition-delay: 0.5s;
   transition-timing-function: linear;
 }
+
+/* Interview styling */
+
 .interview-box {
   width: 100vw;
   display: grid;
@@ -208,6 +217,9 @@ body {
   display: flex;
   justify-content: center;
 }
+
+/* Feedback styling */
+
 .feedback {
   cursor: pointer;
 }
@@ -336,6 +348,27 @@ body {
 .text-feedback::-webkit-scrollbar-thumb {
   background: #fb8122;
 }
+
+.frequent-word-container {
+  display: flex;
+  justify-content: center;
+}
+.frequent-word {
+  background-color: rgb(251, 129, 34);
+  border-radius: 15px;
+  padding: 5px;
+  text-transform: capitalize;
+  font-size: 20px;
+  text-shadow: 2px 2px 1px black;
+  margin: 4px;
+}
+.text-feedback-info {
+  padding: 10px;
+}
+.text-feedback-box {
+  width: 100%;
+}
+
 .content {
   background-color: rgb(29, 34, 40);
   display: flex;
@@ -357,6 +390,9 @@ body {
   margin-right: 10px;
   margin-left: 10px;
 }
+
+/* Modals styling */
+
 .standing-robot {
   height: 65vh;
 }
@@ -408,6 +444,9 @@ body {
   color: rgb(255, 226, 226);
   box-sizing: border-box;
 }
+
+/* Interview guide styling */
+
 .interview_info {
   background-color: rgb(29, 34, 40);
   overflow-y: scroll;
@@ -446,6 +485,8 @@ body {
   height: 85vh;
 }
 
+/* Splash styling */
+
 .splash-container {
   height: 89.1vh;
   display: flex;
@@ -454,25 +495,7 @@ body {
 .splash {
   height: 89.1vh;
 }
-.frequent-word-container {
-  display: flex;
-  justify-content: center;
-}
-.frequent-word {
-  background-color: rgb(251, 129, 34);
-  border-radius: 15px;
-  padding: 5px;
-  text-transform: capitalize;
-  font-size: 20px;
-  text-shadow: 2px 2px 1px black;
-  margin: 4px;
-}
-.text-feedback-info {
-  padding: 10px;
-}
-.text-feedback-box {
-  width: 100%;
-}
+
 .searching {
   width: 75vw;
   height: 78.4vh;
