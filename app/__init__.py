@@ -117,7 +117,7 @@ def inject_csrf_token(response):
                             'FLASK_ENV') == 'production' else None,
                         httponly=True)
     return response
-
+#route static resources from the public folder
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def react_root(path):
