@@ -6,16 +6,28 @@ import SignupModal from '../components/Modals/signup'
 import {useSelector} from 'react-redux'
 import { login } from "../store/session";
 import {useDispatch} from 'react-redux'
+import { useMediaQuery } from 'react-responsive'
+
 
 const NavBar = () => {
+
+  const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1224 })
+  const isBigScreen = useMediaQuery({ minDeviceWidth: 1824 })
+  const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 })
+  const isTabletOrMobileDevice = useMediaQuery({ maxDeviceWidth: 1224 })
+  const isPortrait = useMediaQuery({ orientation: 'portrait' })
+  const isRetina = useMediaQuery({ minResolution: '2dppx' })
+
+
   let dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
   let demoHandler = () => {
     dispatch(login('demo@aa.io', 'password'))
   }
+
   return (
     <nav className="navbar">
-      <ul className="navbar-list">
+      {<ul className="navbar-list">
         <li className='home navlink'>
           <NavLink className='navlink' to="/" exact={true} activeClassName='active'>
             Home
@@ -67,7 +79,7 @@ const NavBar = () => {
         </li>
         }
         </div>
-      </ul>
+      </ul>}
     </nav>
   );
 }
