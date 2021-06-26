@@ -27,7 +27,7 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-      {<ul className="navbar-list">
+      {(isBigScreen || isDesktopOrLaptop) && <ul className="navbar-list">
         <li className='home navlink'>
           <NavLink className='navlink' to="/" exact={true} activeClassName='active'>
             Home
