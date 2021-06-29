@@ -85,7 +85,11 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
+
         <ul className='mobile-menu'>
+        <li>
+        <button className='mobile' >Mobile Menu</button>
+        </li>
         <li className='info navlink'>
           <NavLink className='navlink' to="/info" exact={true} activeClassName='active'>
             Interview Guide
