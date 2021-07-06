@@ -49,74 +49,37 @@ body {
  }
 
 }
-
+}
 /* Extra large devices (large desktops, 1200px and up) */
 
 @media (min-width: 1200px) {
 
 
 }
-.navbar {
-  width: 100vw;
-  background-color: rgb(29, 34, 40);
-  padding: 10px;
-  margin: 0;
-  border-bottom: 5px solid rgb(251, 129, 34);
-}
-.button:hover {
-  transition-property: all;
-  transition-duration: 1s;
-  transition-delay: 0.5s;
-  transition-timing-function: linear;
-  color: rgb(251, 129, 34);
-}
-.navlink:hover {
-  transition-property: all;
-  transition-duration: 1s;
-  transition-delay: 0.5s;
-  transition-timing-function: linear;
-  color: rgb(251, 129, 34);
-}
-.navbar-list {
-  width: 90vw;
-  display: flex;
-  list-style: none;
-  justify-content: space-between;
-}
-
-.user-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-.button {
-  font-size: 16px;
-  transition-property: all;
-  transition-duration: 0.5s;
-  transition-delay: 0.5s;
-  background-color: transparent;
-  color: rgb(225, 226, 226);
-  border: none;
-  text-decoration: solid underline rgb(251, 129, 34) 5px;
-  cursor: pointer;
-}
-.active {
-  color: rgb(255, 226, 226);
-  text-decoration: none;
-}
-.navlink {
-  color: rgb(255, 226, 226);
-  text-decoration: none;
-  border: none;
-  text-decoration: solid underline rgb(251, 129, 34) 5px;
-  cursor: pointer;
-  transition-property: all;
-  transition-duration: 0.5s;
-  transition-delay: 0.5s;
-  transition-timing-function: linear;
-}
 
 /* Interview styling */
+@media (min-width: 576px) {
 
+  /* Medium devices (tablets, 768px and up) */
+
+  @media (min-width: 768px) {
+
+
+  /* Large devices (desktops, 992px and up)*/
+
+  @media (min-width: 992px) {
+
+   }
+
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+
+  @media (min-width: 1200px) {
+
+
+  }
+}
 .interview-box {
   width: 100vw;
   display: grid;
@@ -241,7 +204,28 @@ body {
 }
 
 /* Feedback styling */
+@media (min-width: 576px) {
 
+  /* Medium devices (tablets, 768px and up) */
+
+  @media (min-width: 768px) {
+
+
+  /* Large devices (desktops, 992px and up)*/
+
+  @media (min-width: 992px) {
+
+   }
+
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+
+  @media (min-width: 1200px) {
+
+
+  }
+}
 .feedback {
   cursor: pointer;
 }
@@ -414,7 +398,28 @@ body {
 }
 
 /* Modals styling */
+@media (min-width: 576px) {
 
+  /* Medium devices (tablets, 768px and up) */
+
+  @media (min-width: 768px) {
+
+
+  /* Large devices (desktops, 992px and up)*/
+
+  @media (min-width: 992px) {
+
+   }
+
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+
+  @media (min-width: 1200px) {
+
+
+  }
+}
 .standing-robot {
   height: 65vh;
 }
@@ -468,7 +473,28 @@ body {
 }
 
 /* Interview guide styling */
+@media (min-width: 576px) {
 
+  /* Medium devices (tablets, 768px and up) */
+
+  @media (min-width: 768px) {
+
+
+  /* Large devices (desktops, 992px and up)*/
+
+  @media (min-width: 992px) {
+
+   }
+
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+
+  @media (min-width: 1200px) {
+
+
+  }
+}
 .interview_info {
   background-color: rgb(29, 34, 40);
   overflow-y: scroll;
@@ -508,7 +534,28 @@ body {
 }
 
 /* Splash styling */
+@media (min-width: 576px) {
 
+  /* Medium devices (tablets, 768px and up) */
+
+  @media (min-width: 768px) {
+
+
+  /* Large devices (desktops, 992px and up)*/
+
+  @media (min-width: 992px) {
+
+   }
+
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+
+  @media (min-width: 1200px) {
+
+
+  }
+}
 .splash-container {
   height: 89.1vh;
   display: flex;
@@ -588,7 +635,29 @@ body {
           height: 89.1vh;
           width: auto;
         }
-        /* Live interview styling */
+/* Live interview styling */
+@media (min-width: 576px) {
+
+  /* Medium devices (tablets, 768px and up) */
+
+  @media (min-width: 768px) {
+
+
+  /* Large devices (desktops, 992px and up)*/
+
+  @media (min-width: 992px) {
+
+   }
+
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+
+  @media (min-width: 1200px) {
+
+
+  }
+}
         .searching {
           width: 75vw;
           height: 78.4vh;
@@ -661,7 +730,27 @@ body {
 }
 
 /* Feedback Mail styling */
+@media (min-width: 576px) {
 
+  /* Medium devices (tablets, 768px and up) */
+
+  @media (min-width: 768px) {
+
+
+  /* Large devices (desktops, 992px and up)*/
+
+  @media (min-width: 992px) {
+
+   }
+
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+
+  @media (min-width: 1200px) {
+
+  }
+  }
 .mail {
   position: absolute;
   bottom: 5px;
