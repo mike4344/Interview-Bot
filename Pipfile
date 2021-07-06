@@ -33,6 +33,7 @@ flask-socketio = "*"
 eventlet = "==0.30.2"
 twilio = "*"
 pyjwt = "*"
+flask-mail = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"

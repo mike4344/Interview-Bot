@@ -4,7 +4,7 @@ from flask import Blueprint, jsonify, request
 from app.models import User, Feedback, Video, Question, db
 
 
-
+# register route for videos
 videos_routes = Blueprint('videos', __name__)
 
 
@@ -15,6 +15,7 @@ def videos_handler(video_id, question_id, user_id):
         video = video_query.to_dict()
         return {'video': video}
     elif request.method == 'POST':
+        # Uploading the Video to AWS
         if ("video" in request.files):
             video=request.files["video"]
             video.filename = get_unique_filename(video.filename)
